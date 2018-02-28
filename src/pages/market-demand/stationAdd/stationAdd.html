@@ -1,0 +1,116 @@
+<ion-header>
+  
+    <ion-navbar color="primary">
+      <ion-title>填写站点需求</ion-title>
+      <ion-buttons end>
+        <button ion-button icon-only color="royal" (click)="submit(type)">
+          保存
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  
+  </ion-header>
+  <ion-content id="stationAdd">
+  
+  <ion-list  class="fillInlist">
+    <ion-item class="sm-headline">
+      <ion-icon name="my-project" md="md-my-project" color="primary" class="sm-icon"></ion-icon>站点信息
+      <ion-icon name="ios-arrow-down" item-right *ngIf="!isShow" (click)="isShow=!isShow" class="arrow"></ion-icon>
+      <ion-icon name="ios-arrow-forward" item-right *ngIf="isShow" (click)="isShow=!isShow" class="arrow"></ion-icon>
+    </ion-item>
+    <ion-list *ngIf="!isShow">
+      <ion-item>
+        <ion-label>
+          <i>*</i>站点名称</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addProject.siteName"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <i>*</i>站点类型</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addProject.siteType"></ion-input>
+      </ion-item>
+      <!-- <ion-item>
+          <ion-label>
+            <i>*</i>站点地址</ion-label>
+          <ion-input type="text" item-right [(ngModel)]="addProject.siteType"></ion-input>
+        </ion-item> -->
+      <ion-item  (click)="showAreasSelect()">
+          <ion-label>
+            <i>*</i>地区</ion-label>
+          <ion-input type="text" item-right [(ngModel)]="city" readonly></ion-input>
+        </ion-item>
+      
+    </ion-list>
+    </ion-list>
+
+    <ion-list  class="fillInlist">
+      <ion-item class="sm-headline">
+        <ion-icon name="my-project" md="md-my-project" color="primary" class="sm-icon"></ion-icon>联系人信息
+        <ion-icon name="ios-arrow-down" item-right *ngIf="!isShow2" (click)="isShow2=!isShow2" class="arrow"></ion-icon>
+        <ion-icon name="ios-arrow-forward" item-right *ngIf="isShow2" (click)="isShow2=!isShow2" class="arrow"></ion-icon>
+      </ion-item>
+      <ion-list *ngIf="!isShow2">
+        <ion-item>
+          <ion-label>
+            <i>*</i>联系人姓名</ion-label>
+          <ion-input type="text" item-right [(ngModel)]="addProject.name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            <i>*</i>联系人性别</ion-label>
+            <ion-select [(ngModel)]="addProject.sex" cancelText="取消" okText="确定">
+              <ion-option value="男">男</ion-option>
+              <ion-option value="女">女</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            <i>*</i>联系人职位</ion-label>
+          <ion-input type="text" item-right [(ngModel)]="addProject.position"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            <i>*</i>联系人电话</ion-label>
+          <ion-input type="text" item-right [(ngModel)]="addProject.phone"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            联系人微信</ion-label>
+          <ion-input type="text" item-right [(ngModel)]="addProject.wechat"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            联系人邮箱</ion-label>
+          <ion-input type="text" item-right [(ngModel)]="addProject.email"></ion-input>
+        </ion-item>
+      </ion-list>
+      </ion-list>
+
+
+      <ion-list  class="fillInlist">
+        <ion-item class="sm-headline">
+          <ion-icon name="my-project" md="md-my-project" color="primary" class="sm-icon"></ion-icon>需求信息
+          <ion-icon name="ios-arrow-down" item-right *ngIf="!isShow3" (click)="isShow3=!isShow3" class="arrow"></ion-icon>
+          <ion-icon name="ios-arrow-forward" item-right *ngIf="isShow3" (click)="isShow3=!isShow3" class="arrow"></ion-icon>
+        </ion-item>
+        <ion-list *ngIf="!isShow3">
+          <ion-item>
+            <ion-label>
+              需求类型</ion-label>
+            <ion-input type="text" item-right [(ngModel)]="addProject.demandType"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              需求说明</ion-label>
+            <ion-input type="text" item-right [(ngModel)]="addProject.description"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              备注</ion-label>
+            <ion-input type="text" item-right [(ngModel)]="addProject.remark"></ion-input>
+          </ion-item>
+        </ion-list>
+        </ion-list>
+
+  </ion-content>
+  <areas-select #areasSelect (cancel)="closeSelect()" (done)="done($event)"></areas-select>

@@ -1,0 +1,158 @@
+
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>{{pageName}}筛选</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only class="submit" (click)="submit()">
+        确定
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content id="filtrate" [ngSwitch]="page">
+  <!-- 企业信息筛选 -->
+  <ion-list class="edit_pd" *ngSwitchCase="'company'">
+      <ion-item>
+          <ion-label color="thinGrey">企业名称</ion-label>
+          <ion-input [(ngModel)]="company.company"  item-right></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="thinGrey">公司类型</ion-label>
+            <ion-input [(ngModel)]="company.companyType" item-right></ion-input>
+          </ion-item>
+    <!-- <ion-item (click)="showAreasSelect()">
+      <ion-label color="thinGrey">选择地区</ion-label>
+      <ion-input [(ngModel)]="city" readonly item-right></ion-input>
+    </ion-item> -->
+    <ion-item >
+      <ion-label color="thinGrey">省</ion-label>
+      <ion-select [(ngModel)]="company.provinces" (ngModelChange)="getCities()" item-right>
+        <ion-option value="{{item}}" *ngFor="let item of provinces">{{item}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item >
+      <ion-label color="thinGrey">市</ion-label>
+      <ion-select [(ngModel)]="company.city" (ngModelChange)="getAreas()" item-right>
+        <ion-option value="{{item2}}" *ngFor="let item2 of cities">{{item2}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item >
+      <ion-label color="thinGrey">区</ion-label>
+      <ion-select [(ngModel)]="company.area"  item-right>
+        <ion-option value="{{item3}}" *ngFor="let item3 of areas">{{item3}}</ion-option>
+      </ion-select>
+    
+    </ion-item>
+    <ion-item >
+      <ion-label color="thinGrey">开始时间</ion-label>
+      <<ion-datetime displayFormat="YYYY-MM-DD" cancelText="取消" doneText="确认" max="2020-10-31" bindon-ngModel="company.startTime"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label color="thinGrey">结束时间</ion-label>
+      <<ion-datetime displayFormat="YYYY-MM-DD" cancelText="取消" doneText="确认" max="2020-10-31" bindon-ngModel="company.endTime"></ion-datetime>
+    </ion-item>
+    <ion-item>
+        <ion-label color="thinGrey">需求类型</ion-label>
+        <ion-input [(ngModel)]="company.projectType"  item-right></ion-input>
+    </ion-item>
+  </ion-list>
+  <!-- 企业信息筛选 -->
+  <!-- 业主信息筛选 -->
+  <ion-list class="edit_pd" *ngSwitchCase="'people'">
+      <ion-item>
+          <ion-label color="thinGrey">业主姓名</ion-label>
+          <ion-input [(ngModel)]="people.ownerName"  item-right></ion-input>
+        </ion-item>
+        <!-- <ion-item (click)="showAreasSelect()">
+            <ion-label color="thinGrey">选择地区</ion-label>
+            <ion-input [(ngModel)]="city" readonly item-right></ion-input>
+          </ion-item> -->
+          <ion-item >
+            <ion-label color="thinGrey">省</ion-label>
+            <ion-select [(ngModel)]="people.provinces" (ngModelChange)="getCities()" item-right>
+              <ion-option value="{{item}}" *ngFor="let item of provinces">{{item}}</ion-option>
+            </ion-select>
+          </ion-item>
+          <ion-item >
+            <ion-label color="thinGrey">市</ion-label>
+            <ion-select [(ngModel)]="people.city" (ngModelChange)="getAreas()" item-right>
+              <ion-option value="{{item2}}" *ngFor="let item2 of cities">{{item2}}</ion-option>
+            </ion-select>
+          </ion-item>
+          <ion-item >
+            <ion-label color="thinGrey">区</ion-label>
+            <ion-select [(ngModel)]="people.area"  item-right>
+              <ion-option value="{{item3}}" *ngFor="let item3 of areas">{{item3}}</ion-option>
+            </ion-select>
+          
+          </ion-item>
+    <!-- <ion-item (click)="showAreasSelect()">
+      <ion-label color="thinGrey">选择地区</ion-label>
+      <ion-input [(ngModel)]="city" readonly item-right></ion-input>
+    </ion-item> -->
+    <ion-item >
+      <ion-label color="thinGrey">开始时间</ion-label>
+      <<ion-datetime displayFormat="YYYY-MM-DD" cancelText="取消" doneText="确认" max="2020-10-31" bindon-ngModel="people.startTime"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label color="thinGrey">结束时间</ion-label>
+      <<ion-datetime displayFormat="YYYY-MM-DD" cancelText="取消" doneText="确认" max="2020-10-31" bindon-ngModel="people.endTime"></ion-datetime>
+    </ion-item>
+    <ion-item>
+        <ion-label color="thinGrey">需求类型</ion-label>
+        <ion-input [(ngModel)]="people.demandType"  item-right></ion-input>
+    </ion-item>
+  </ion-list>
+  <!-- 业主信息筛选 -->
+  <!-- 站点信息筛选 -->
+  <ion-list class="edit_pd" *ngSwitchCase="'station'">
+      <ion-item>
+          <ion-label color="thinGrey">站点名称</ion-label>
+          <ion-input [(ngModel)]="station.siteName"  item-right></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="thinGrey">站点类型</ion-label>
+            <ion-input [(ngModel)]="station.siteType" item-right></ion-input>
+          </ion-item>
+          <ion-item >
+              <ion-label color="thinGrey">省</ion-label>
+              <ion-select [(ngModel)]="station.provinces" (ngModelChange)="getCities()" item-right>
+                <ion-option value="{{item}}" *ngFor="let item of provinces">{{item}}</ion-option>
+              </ion-select>
+            </ion-item>
+            <ion-item >
+              <ion-label color="thinGrey">市</ion-label>
+              <ion-select [(ngModel)]="station.city" (ngModelChange)="getAreas()" item-right>
+                <ion-option value="{{item2}}" *ngFor="let item2 of cities">{{item2}}</ion-option>
+              </ion-select>
+            </ion-item>
+            <ion-item >
+              <ion-label color="thinGrey">区</ion-label>
+              <ion-select [(ngModel)]="station.area"  item-right>
+                <ion-option value="{{item3}}" *ngFor="let item3 of areas">{{item3}}</ion-option>
+              </ion-select>
+            
+            </ion-item>
+    <!-- <ion-item (click)="showAreasSelect()">
+      <ion-label color="thinGrey">选择地区</ion-label>
+      <ion-input [(ngModel)]="city" readonly item-right></ion-input>
+    </ion-item> -->
+    <ion-item >
+      <ion-label color="thinGrey">开始时间</ion-label>
+      <<ion-datetime displayFormat="YYYY-MM-DD" cancelText="取消" doneText="确认" max="2020-10-31" bindon-ngModel="station.startTime"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label color="thinGrey">结束时间</ion-label>
+      <<ion-datetime displayFormat="YYYY-MM-DD" cancelText="取消" doneText="确认" max="2020-10-31" bindon-ngModel="station.endTime"></ion-datetime>
+    </ion-item>
+    <ion-item>
+        <ion-label color="thinGrey">需求类型</ion-label>
+        <ion-input [(ngModel)]="station.demandType"  item-right></ion-input>
+    </ion-item>
+  </ion-list>
+  <!-- 站点信息筛选 -->
+</ion-content>
+<areas-select *ngIf="aa.length" #areasSelect [citiesData]='aa' (cancel)="closeSelect()" (done)="done($event)"></areas-select>

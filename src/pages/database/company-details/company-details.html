@@ -1,0 +1,170 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>企业客户详情</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list class="fillInlist">
+
+    <ion-item class="sm-headline">
+      <ion-icon name="my-project" md="md-my-project" color="primary" class="sm-icon"></ion-icon>企业信息
+      <ion-icon name="ios-arrow-down" item-right *ngIf="!isShow2" (click)="isShow2=!isShow2" class="arrow"></ion-icon>
+      <ion-icon name="ios-arrow-forward" item-right *ngIf="isShow2" (click)="isShow2=!isShow2" class="arrow"></ion-icon>
+    </ion-item>
+
+    <ion-list *ngIf="!isShow2">
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>企业名称</ion-label>
+        <span item-right>{{detailsList.company_name}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>公司成立时间</ion-label>
+        <span item-right>{{detailsList?.company_establish_time}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>公司类型</ion-label>
+        <span item-right>{{detailsList.company_type}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>主要产品和服务</ion-label>
+        <span item-right>{{detailsList.main_service_product}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>注册资金</ion-label>
+        <span item-right>{{detailsList?.registered_capital}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>地区</ion-label>
+        <span item-right>{{detailsList.address}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>企业经度</ion-label>
+        <span item-right>{{detailsList.longitude}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>企业纬度</ion-label>
+        <span item-right>{{detailsList.latitude}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>数据来源</ion-label>
+        <span item-right>{{detailsList.data_source}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>企业邮箱</ion-label>
+        <span item-right>{{detailsList?.company_email}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>企业网站</ion-label>
+        <span item-right>{{detailsList?.company_web}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>企业电话</ion-label>
+        <span item-right>{{detailsList?.company_tel}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>公司地址</ion-label>
+        <span item-right>{{detailsList?.company_address}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>是否已有合作项目</ion-label>
+        <span item-right>{{detailsList.whether_cooperation_company}}</span>
+      </ion-item>
+    </ion-list>
+  </ion-list>
+  <ion-list class="fillInlist">
+
+    <ion-item class="sm-headline">
+      <ion-icon name="my-project" md="md-my-project" color="primary" class="sm-icon"></ion-icon>联系人信息
+      <ion-icon name="ios-arrow-down" item-right *ngIf="!isShow3" (click)="isShow3=!isShow3" class="arrow"></ion-icon>
+      <ion-icon name="ios-arrow-forward" item-right *ngIf="isShow3" (click)="isShow3=!isShow3" class="arrow"></ion-icon>
+    </ion-item>
+
+    <ion-list *ngIf="!isShow3">
+      <ion-item>
+        <ion-label>
+          <i>*</i>联系人姓名</ion-label>
+        <span item-right>{{detailsList.contacts_username}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>联系人性别</ion-label>
+        <span item-right>{{detailsList.contacts_sex}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          联系人职位</ion-label>
+        <span item-right>{{detailsList?.contacts_position}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>联系人电话</ion-label>
+        <span item-right>{{detailsList.contacts_tel}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          联系人微信</ion-label>
+        <span item-right>{{detailsList?.contacts_WeChat}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          联系人邮箱</ion-label>
+        <span item-right>{{detailsList?.contacts_email}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          联系人脾气</ion-label>
+        <span item-right>{{detailsList?.contacts_temper}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          联系人兴趣</ion-label>
+        <span item-right>{{detailsList?.contacts_interest}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          共同认识的人</ion-label>
+        <span item-right>{{detailsList?.know_people}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          备注</ion-label>
+        <span item-right>{{detailsList?.remark}}</span>
+      </ion-item>
+
+    </ion-list>
+  </ion-list>
+</ion-content>

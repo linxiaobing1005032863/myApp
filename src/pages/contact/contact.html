@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      My Calendar App
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addEvent()">
+        <ion-icon name="add-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="calendar-header">
+    <ion-row class="calendar-month">
+      <ion-col col-2 (click)="goToLastMonth()"><ion-icon name="arrow-back"></ion-icon></ion-col>
+      <ion-col col-8>{{currentMonth}} {{currentYear}}</ion-col>
+      <ion-col col-2 (click)="goToNextMonth()"><ion-icon name="arrow-forward"></ion-icon></ion-col>
+    </ion-row>
+  </div>
+  <div class="calendar-body">
+    <ion-grid>
+      <ion-row class="calendar-weekday">
+        <ion-col>Su</ion-col>
+        <ion-col>Mo</ion-col>
+        <ion-col>Tu</ion-col>
+        <ion-col>We</ion-col>
+        <ion-col>Th</ion-col>
+        <ion-col>Fr</ion-col>
+        <ion-col>Sa</ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

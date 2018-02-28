@@ -1,0 +1,200 @@
+page-database {
+  $modal-size: 20vw;
+  #dataTop {
+    .segment-md .segment-button,
+    .segment-ios .segment-button {
+      border: 0;
+      color: #333;
+      font-size: 15px;
+      height: 40px;
+      line-height: 40px;
+      &.segment-activated {
+        color: #32a7e3;
+        background: #fff;
+        border-bottom: 3px solid #32a7e3;
+      }
+    }
+    .toolbar {
+      .searchbar-md,
+      .searchbar-ios {
+        width: 98%;
+        .searchbar-input {
+          background: #fff;
+          border: 1px solid #d9d9d9;
+          border-radius: 2px;
+        }
+      }
+    }
+  }
+  #dataBottom {
+    ion-fab[right]{
+      right: 20px;
+    }
+    &.showContent {
+      &.content-md,
+      &.content-ios {
+        .fixed-content,
+        .scroll-content {
+          margin-top: 117px!important;
+        }
+      }
+    }
+    .list-md,
+    .list-ios {
+      margin: 0;
+    }
+    .item-divider-md,
+    .item-divider-ios {
+      font-size: 16px;
+      color: #666;
+      height: 30px;
+      line-height: 30px;
+      background: #f7f7f7;
+      border: 0;
+    }
+    .item-md h2,
+    .item-ios h2 {
+      font-size: 14px;
+      color: #333;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    ion-item-group {
+      .item-block {
+        padding-left: 19px;
+        height: 50px;
+        border-bottom: 1px solid #f4f4f4;
+        &:last-child {
+          border: 0;
+        }
+      }
+    }
+    #letter {
+      width: 5%;
+      position: fixed;
+      top: 28%;
+      right: 0.5%;
+      z-index: 100;
+      text-align: center;
+      .indexed-item {
+        font-family: "Arial";
+        font-size: 13px;
+        color: #999;
+        transition: all .3s ease-out;
+        margin: 2px 0;
+        cursor: pointer;
+        &.activate {
+          transform: scale(1.2);
+          color: #000;
+        }
+      }
+    }
+    .modal {
+      top: 52%;
+      left: 50%;
+      z-index: 100;
+      position: fixed;
+      pointer-events: none;
+      width: $modal-size;
+      height: $modal-size;
+      line-height: $modal-size;
+      margin-left: -($modal-size * 0.5);
+      margin-top: -($modal-size * 0.5);
+      color: #fff;
+      font-size: 3em;
+      text-align: center;
+      border-radius: 8px;
+      background-color: rgba(0, 0, 0, 0.52);
+      box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.16);
+      transition: opacity .5s;
+      opacity: 0;
+      &.show {
+        opacity: 1
+      }
+    }
+    .fab {
+      font-size: 14px;
+      color: #fff;
+      background: linear-gradient(to right bottom, #54d0f9, #36ace6);
+      box-shadow: 0 0 20px rgba(#36ace6, 0.5);
+      line-height: 17px;
+      &.inlist1 {
+        background: #ffbb38;
+        box-shadow: transparent;
+      }
+      &.inlist2 {
+        background: #1fcd48;
+        box-shadow: transparent;
+      }
+    }
+    .fab-in-list {
+      width: 56px;
+      height: 56px;
+    }
+    .myfile {
+      .item-block {
+        padding: 10px 0;
+        padding-left: 19px;
+        height: 70px;
+        ion-thumbnail {
+          img {
+            border-radius: 10px;
+          }
+        }
+        h2 {
+          font-size: 15px;
+          color: #333;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+        p {
+          font-size: 14px;
+          color: #999;
+        }
+        .item-inner {
+          border: 0;
+        }
+      }
+      .item-ios,
+      .item-md {
+        ion-thumbnail {
+          min-height: 51px!important;
+          min-width: 51px!important;
+          img {
+            width: 51px;
+            height: 51px;
+          }
+        }
+      }
+    }
+    .searchList {
+      .part {
+        .item-block {
+          .item-inner {
+            border-bottom-color: #f4f4f4!important;
+          }
+          h2 {
+            font-size: 15px;
+          }
+          .title {
+            color: #666;
+            font-size: 14px;
+          }
+        }
+        .item-block .item-inner {
+          border-bottom: 1px solid #dedede;
+        }
+      }
+      .part {
+        margin-bottom: 15px;
+      }
+    }
+    .list-md>.item-block:last-child,
+    .list-md>.item-wrapper:last-child .item-block,
+    {
+      border-bottom-color: #f4f4f4!important;
+    }
+  }
+}

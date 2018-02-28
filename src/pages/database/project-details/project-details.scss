@@ -1,0 +1,24 @@
+page-project-details {
+  @include database;
+  .filterContent {
+    .accessory {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      .img {
+        flex: 0 0 28%;
+        height: 100px;
+        width: 28%;
+      }
+      .model-blue {
+        background: linear-gradient(to right bottom, #00d8ff, #00b1ff);
+        flex: 0 0 28%;
+        height: 100px;
+        @include center;
+        ion-icon {
+          font-size: 55px;
+        }
+      }
+    }
+  }
+}

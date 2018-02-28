@@ -1,0 +1,229 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>站点详情</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-list class="fillInlist">
+    <ion-item class="sm-headline">
+      <ion-icon name="my-project" md="md-my-project" color="primary" class="sm-icon"></ion-icon>站点信息
+      <ion-icon name="ios-arrow-down" item-right *ngIf="!isShow2" (click)="isShow2=!isShow2" class="arrow"></ion-icon>
+      <ion-icon name="ios-arrow-forward" item-right *ngIf="isShow2" (click)="isShow2=!isShow2" class="arrow"></ion-icon>
+    </ion-item>
+    <ion-list *ngIf="!isShow2">
+      <ion-item>
+        <ion-label>
+          <i>*</i>站点名称</ion-label>
+        <span item-right>{{detailsList.site_name}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>站点类型</ion-label>
+        <span item-right>{{detailsList.site_type}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>站点区域</ion-label>
+        <span item-right>{{detailsList.site_region}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label><i>*</i>现网状态</ion-label>
+        <span item-right>{{detailsList.current_network_state}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>站点状态</ion-label>
+        <span item-right>{{detailsList?.site_state}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>归属运营商</ion-label>
+        <span item-right>{{detailsList?.operator}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>设计院</ion-label>
+        <span item-right>{{detailsList.design_institute}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>监理</ion-label>
+        <span item-right>{{detailsList.supervisor}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>站点地址</ion-label>
+        <span item-right>{{detailsList.site_address}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>总投资</ion-label>
+        <span item-right>{{detailsList?.total_investment}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>集成费</ion-label>
+        <span item-right>{{detailsList?.integration_fee}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>站点经度</ion-label>
+        <span item-right>{{detailsList?.longitude}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>站点纬度</ion-label>
+        <span item-right>{{detailsList?.latitude}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>是否选址输出</ion-label>
+        <span item-right>{{detailsList.whether_address}}</span>
+      </ion-item>
+
+      <ion-item *ngIf="detailsList.whether_address=='是'">
+        <ion-label>
+          <i>*</i>是否已入场</ion-label>
+        <span item-right>{{detailsList.whether_admission}}</span>
+      </ion-item>
+
+      <ion-item *ngIf="detailsList.whether_admission=='是'">
+        <ion-label>
+          <i>*</i>入场日期</ion-label>
+        <span item-right>{{detailsList.admission_time}}</span>
+      </ion-item>
+
+      <ion-item *ngIf="detailsList.whether_admission=='是'">
+        <ion-label>
+          <i>*</i>是否完工</ion-label>
+        <span item-right>{{detailsList.whether_finished}}</span>
+      </ion-item>
+
+      <ion-item *ngIf="detailsList.whether_finished=='是'">
+        <ion-label>
+          <i>*</i>完工日期</ion-label>
+        <span item-right>{{detailsList.finished_time}}</span>
+      </ion-item>
+
+      <ion-item *ngIf="detailsList.whether_finished=='是'">
+        <ion-label>
+          <i>*</i>是否开通</ion-label>
+        <span item-right>{{detailsList.whether_open}}</span>
+      </ion-item>
+
+      <ion-item *ngIf="detailsList.whether_open=='是'">
+        <ion-label>
+          <i>*</i>开通日期</ion-label>
+        <span item-right>{{detailsList.open_time}}</span>
+      </ion-item>
+
+      <ion-item *ngIf="detailsList.whether_open=='是'">
+        <ion-label>
+          <i>*</i>单验证是否通过</ion-label>
+        <span item-right>{{detailsList.whether_verification}}</span>
+      </ion-item>
+
+      <ion-item *ngIf="detailsList.whether_verification=='是'">
+        <ion-label>
+          <i>*</i>单验日期</ion-label>
+        <span item-right>{{detailsList.verification_time}}</span>
+      </ion-item>
+
+      <ion-item *ngIf="detailsList.whether_verification=='是'">
+        <ion-label>
+          <i>*</i>是否初验</ion-label>
+        <span item-right>{{detailsList.whether_start_verification}}</span>
+      </ion-item>
+
+      <ion-item *ngIf="detailsList.whether_start_verification=='是'">
+        <ion-label>
+          <i>*</i>初验日期</ion-label>
+        <span item-right>{{detailsList.start_verification_time}}</span>
+      </ion-item>
+
+      <ion-item *ngIf="detailsList.whether_start_verification=='是'">
+        <ion-label>
+          <i>*</i>是否终验</ion-label>
+        <span item-right>{{detailsList.whether_end_verification}}</span>
+      </ion-item>
+
+      <ion-item *ngIf="detailsList.whether_end_verification=='是'">
+        <ion-label>
+          <i>*</i>初终验日期</ion-label>
+        <span item-right>{{detailsList.end_verification_time}}</span>
+      </ion-item>
+
+    </ion-list>
+  </ion-list>
+
+  <ion-list class="fillInlist">
+
+    <ion-item class="sm-headline">
+      <ion-icon name="my-project" md="md-my-project" color="primary" class="sm-icon"></ion-icon>联系人信息
+      <ion-icon name="ios-arrow-down" item-right *ngIf="!isShow3" (click)="isShow3=!isShow3" class="arrow"></ion-icon>
+      <ion-icon name="ios-arrow-forward" item-right *ngIf="isShow3" (click)="isShow3=!isShow3" class="arrow"></ion-icon>
+    </ion-item>
+
+    <ion-list *ngIf="!isShow3">
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>联系人姓名</ion-label>
+        <span item-right>{{detailsList.contact_name}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>联系人性别</ion-label>
+        <span item-right>{{detailsList.contact_sex}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>联系人电话</ion-label>
+        <span item-right>{{detailsList.contact_phone}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>联系人微信</ion-label>
+        <span item-right>{{detailsList?.contact_WeChat}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>联系人邮箱</ion-label>
+        <span item-right>{{detailsList?.contact_email}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>联系人脾气</ion-label>
+        <span item-right>{{detailsList?.contact_temper}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>联系人兴趣</ion-label>
+        <span item-right>{{detailsList?.contact_hobby}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>共同认识的人</ion-label>
+        <span item-right>{{detailsList?.know_people}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>备注</ion-label>
+        <span item-right>{{detailsList?.remark}}</span>
+      </ion-item>
+
+    </ion-list>
+  </ion-list>
+</ion-content>

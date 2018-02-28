@@ -1,0 +1,67 @@
+page-my-file {
+  #myFileT {
+    .segment-ios {
+      .segment-button {
+        border: 0;
+        color: #333;
+        font-size: 15px;
+        height: 40px;
+        &.segment-activated {
+          color: #32a7e3;
+          background: #fff;
+          span {
+            padding: 0 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #32a7e3;
+          }
+        }
+      }
+    }
+  }
+  #myFileTB {
+    .sm-title {
+      color: #333;
+      font-size: 15px;
+      margin-left: 13px;
+    }
+    .item-ios,
+    .item-md {
+      border: 1px solid #f4f4f4;
+      &:last-child {
+        border: 0;
+      }
+      ion-thumbnail {
+        min-height: 51px!important;
+        min-width: 51px!important;
+        img {
+          width: 51px;
+          height: 51px;
+        }
+      }
+      h2 {
+        font-size: 14px;
+        color: #333;
+        margin: 0 0 4px;
+      }
+      p {
+        font-size: 13px;
+        color: #999;
+      }
+      button {
+        color: #999;
+        font-size: 13px;
+      }
+    }
+    .list-ios,
+    .list-md {
+      .item-block {
+        .item-inner {
+          border: 0;
+        }
+        &:last-child {
+          border: 0;
+        }
+      }
+    }
+  }
+}

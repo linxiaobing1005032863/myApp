@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title class="title">客户关系管理平台</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content id="clientIndex">
+  <ion-grid class="amount">
+    <ion-row>
+      <ion-col col-6 (click)="xx()">
+        <span>2/5</span>
+        <p>今日任务量</p>
+      </ion-col>
+      <ion-col col-6 (click)="xx()">
+        <span>15/20</span>
+        <p>本周任务量</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid class="insideNav">
+    <ion-row>
+      <ion-col col-4 (click)="xx()">
+        <ion-icon name="my-client" md="md-my-client" color="primary" clear></ion-icon>
+        附近客户
+      </ion-col>
+      <ion-col col-4 (click)="xx()">
+        <ion-icon name="my-add-client" md="md-my-add-client" color="primary" clear></ion-icon>
+        新建客户
+      </ion-col>
+      <ion-col col-4 (click)="xx()">
+        <ion-icon name="my-clinet-progress" md="md-my-clinet-progress" color="primary" clear></ion-icon>
+        客户进度
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid class="fun">
+    <h5>功能管理</h5>
+    <ion-row>
+
+      <ion-col col-3 (click)="gotoDatabase()">
+        <a href="javascript:;" class="bg-color model-blue">
+          <ion-icon name="my-database" md="md-my-database" color="light" clear></ion-icon>
+        </a>
+        <p class="bottom-text">资料库</p>
+      </ion-col>
+
+      <ion-col col-3 (click)="gotoDetailbase()">
+        <a href="javascript:;" class="bg-color model-yellow">
+          <ion-icon name="my-calendar" md="md-my-calendar" color="light" clear></ion-icon>
+        </a>
+        <p class="bottom-text">日历待办</p>
+      </ion-col>
+
+      <ion-col col-3 (click)="xx()">
+        <a href="javascript:;" class="bg-color model-pink">
+          <ion-icon name="my-contacts" md="md-my-contacts" color="light" clear></ion-icon>
+        </a>
+        <p class="bottom-text">通讯录</p>
+      </ion-col>
+
+
+      <ion-col col-3 (click)="gotoMarket()">
+        <a href="javascript:;" class="bg-color model-green">
+          <ion-icon name="my-market" md="md-my-market" color="light" clear></ion-icon>
+        </a>
+        <p class="bottom-text">需求市场</p>
+      </ion-col>
+
+      <ion-col col-3 (click)="gotoBidding()">
+        <a href="javascript:;" class="bg-color model-green">
+          <ion-icon name="my-market" md="md-my-market" color="light" clear></ion-icon>
+        </a>
+        <p class="bottom-text">招投标信息</p>
+      </ion-col>
+
+      <ion-col col-3 (click)="xx()">
+        <a href="javascript:;" class="bg-color model-purple">
+          <ion-icon name="my-add" md="md-my-add" color="light" clear></ion-icon>
+        </a>
+        <p class="bottom-text">个性化</p>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

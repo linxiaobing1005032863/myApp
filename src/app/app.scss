@@ -1,0 +1,151 @@
+// http://ionicframework.com/docs/theming/
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+.toolbar-content-md {
+  //安卓居中
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+
+.toolbar-title-md {
+  font-size: 18px;
+}
+
+.back-button.show-back-button {
+  z-index: 100;
+}
+
+$themeColor:#32a7e3;
+$white:#fff;
+$fontColor:#333;
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scroll-content {
+  background: #f4f4f4;
+}
+
+.toolbar-title-md {
+  font-weight: 500;
+}
+
+//单选框的样式
+@mixin radioBtn {
+  .checkbox-icon {
+    width: 26px;
+    height: 26px;
+  }
+  .checkbox-ios .checkbox-checked .checkbox-inner {
+    width: 6px;
+    height: 9px;
+    top: 6px;
+    left: 9px;
+  }
+}
+
+//资料库的详情页--------公告样式
+@mixin database {
+  .fillInlist {
+    margin-top: 0;
+    margin-bottom: 10px;
+    .item-block {
+      font-size: 15px;
+      padding-left: 14px;
+      color: #333;
+      &:last-child {
+        border: 0;
+      }
+      i {
+        color: #ed1919;
+        margin-right: 5px;
+      }
+      .item-inner {
+        border-color: #f4f4f4;
+      }
+    }
+    .sm-headline {
+      font-size: 17px;
+      border: 1px solid #f4f4f4!important;
+      .sm-icon {
+        font-size: 20px;
+        margin-right: 5px;
+      }
+    }
+  }
+}
+
+//资料库的过滤--------三个单选框
+@mixin threeRadio {
+  .row {
+    background: #fff;
+    border-bottom: 1px solid #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 9px;
+    .list-ios>.item-block:first-child,
+    .list-md>.item-block:first-child {
+      border: 0;
+    }
+    .item-ios.item-block,
+    .item-md.item-block {
+      border: 0;
+    }
+  }
+  .choose {
+    @include center;
+    margin: 0;
+    .radio {
+      margin: 0;
+    }
+    .item-radio {
+      padding: 0;
+    }
+    .item-block {
+      width: auto;
+    }
+  }
+}
+
+//资料库的过滤-------页面样式
+@mixin filter {
+  .submit {
+    font-size: 16px;
+    color: #fffefe!important;
+  }
+  .item-ios.item-block,
+  .item-md.item-block {
+    border-bottom: 1px solid #f4f4f4;
+    padding-left: 14px;
+    font-size: 15px;
+    color: #333;
+    .item-inner {
+      border: 0;
+    }
+    &:last-child {
+      border: 0;
+    }
+  }
+  .item-input .label-md {
+    color: #333;
+  }
+  ion-footer {
+    font-size: 16px;
+    color: #fff;
+  }
+}

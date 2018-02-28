@@ -1,0 +1,71 @@
+page-login {
+  .scroll-content {
+    background: white;
+  }
+  #content {
+    background: #fff;
+    input::-webkit-input-placeholder {
+      color: rgb(203, 203, 203);
+    }
+    #login-bg {
+      background: #fff;
+      .item-ios,
+      .item-md {
+        background: #fff;
+        color: #ccc;
+      }
+    }
+    .title {
+      padding: 7.875rem 0 0 0;
+      text-align: center;
+      .item-inner {
+        padding: 0;
+      }
+      .logo-img {
+        display: block;
+        height: 85px;
+        img {
+          width: 7rem;
+        }
+      }
+    }
+    .ipt {
+      padding-left: 3.75rem;
+      padding-right: 3.75rem;
+      z-index: 11;
+      .item-inner {
+        border-bottom: 1px solid#acd0e1;
+      }
+      ion-input {
+        .text-input {
+          padding-left: 13px;
+        }
+      }
+    }
+    .noLine {
+      .item-inner {
+        border-bottom: none;
+      }
+    }
+    .twoSel {
+      padding: 0 3rem 0 3.7rem;
+      border-bottom: none;
+      span {
+        &:last-child {
+          color: #ccc;
+          @include center;
+          font-size: 16px;
+        }
+      }
+    }
+    .login {
+      margin-top: 3.75rem;
+      ion-label {
+        margin: 0;
+        button {
+          height: 40px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "myApp",
+  "app_id": "43d8c7d3",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  },
+  "proxies": [{
+      "path": "/demand",
+      "proxyUrl": "https://demand.issp.bjike.com:9090"
+    },
+    {
+      "path": "/database",
+      "proxyUrl": "http://192.168.0.93:8080"
+    }, {
+      "path": "/user",
+      "proxyUrl": "https://user.issp.bjike.com:9090"
+    }, {
+      "path": "/task",
+      "proxyUrl": "http://192.168.0.58:51508"
+    }, {
+      "path": "/waitmanage",
+      "proxyUrl": "http://192.168.0.57:51506"
+    }, {
+      "path": "/bidding",
+      "proxyUrl": "http://192.168.0.93:90"
+    }
+
+  ]
+}

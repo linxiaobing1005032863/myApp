@@ -1,0 +1,31 @@
+page-tabs {
+  .tabs-ios .tabbar {
+    border: 0;
+  }
+}
+
+.tabs-md-footerNav .tab-button-icon,
+.tabs-ios-white .tab-button-icon {
+  color: #c1c1c1;
+}
+
+.tabs-md-footerNav .tab-button,
+.tabs-ios-white .tab-button {
+  color: #c1c1c1;
+}
+
+.tabs-ios-footerNav .tab-button[aria-selected=true] .tab-button-icon {
+  color: #32a7e3;
+}
+
+.tabs-ios-footerNav .tab-button[aria-selected=true] {
+  color: #32a7e3;
+}
+
+.tabs-md-footerNav .tab-button[aria-selected=true] .tab-button-icon {
+  color: #32a7e3;
+}
+
+.tabs-md-footerNav .tab-button[aria-selected=true] {
+  color: #32a7e3;
+}

@@ -1,0 +1,6 @@
+<ion-tabs #mainTabs color="footerNav" class="foot-tab">
+  <ion-tab [root]="tab1Client" tabTitle="首页" tabIcon="my-home"></ion-tab>
+  <ion-tab [root]="tab2Client" tabTitle="消息" tabIcon="my-message" (ionSelect)="xx()"></ion-tab>
+  <ion-tab [root]="tab3Client" tabTitle="办公" tabIcon="my-work"></ion-tab>
+  <ion-tab [root]="tab4Client" tabTitle="我的" tabIcon="my-mine"  (ionSelect)="xx()"></ion-tab>
+</ion-tabs>

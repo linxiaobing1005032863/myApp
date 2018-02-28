@@ -1,0 +1,34 @@
+page-task-report {
+  .toolbar-background-ios {
+    border-style: none !important;
+  }
+  #reportContent {
+    .item-ios,
+    .item-md {
+      .item-inner {
+        border-bottom: 0.2px solid #eeecf5;
+      }
+    }
+    .timeLay,
+    .label,
+    h3 {
+      color: #333;
+      font-size: 16px;
+    }
+    .expl {
+      width: 100%;
+      height: 7rem;
+      border: none;
+      padding: 1rem 0;
+    }
+    .input-right {
+      background: #fff;
+      .text-input {
+        text-align: right;
+      }
+    }
+    .marginTop {
+      margin-top: 10px;
+    }
+  }
+}

@@ -1,0 +1,121 @@
+<ion-header id="filterPT">
+
+  <ion-navbar color="primary">
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">返回</button>
+    </ion-buttons>
+    <ion-title>项目筛选条件</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only class="submit" (click)="submit()">
+        提交
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content id="filterPB">
+  <ion-list>
+    <ion-item>
+      <ion-label>项目名称</ion-label>
+      <ion-input type="text" item-right [(ngModel)]="paramObj.project_name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>项目类型</ion-label>
+      <ion-input type="text" item-right [(ngModel)]="paramObj.project_type"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>甲方公司</ion-label>
+      <ion-input type="text" item-right [(ngModel)]="paramObj.party_a_company"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>中标单位名称</ion-label>
+      <ion-input type="text" item-right [(ngModel)]="paramObj.bid_company"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>业主客户名称</ion-label>
+      <ion-input type="text" item-right [(ngModel)]="paramObj.owner_customer"></ion-input>
+    </ion-item>
+    <ion-row>
+      <ion-col col-5>
+        <ion-label> 与中标单位签订合同</ion-label>
+      </ion-col>
+      <ion-col col-7>
+        <ion-list radio-group class="choose" [(ngModel)]="paramObj.bid_contract">
+
+          <ion-item>
+            <ion-label>无</ion-label>
+            <ion-radio value="0"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>有</ion-label>
+            <ion-radio value="1"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>全部</ion-label>
+            <ion-radio value="2"></ion-radio>
+          </ion-item>
+
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-5>
+        <ion-label> 与业主签订合同</ion-label>
+      </ion-col>
+      <ion-col col-7>
+        <ion-list radio-group class="choose" [(ngModel)]="paramObj.owner_contract">
+
+          <ion-item>
+            <ion-label>无</ion-label>
+            <ion-radio value="0"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>有</ion-label>
+            <ion-radio value="1"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>全部</ion-label>
+            <ion-radio value="2"></ion-radio>
+          </ion-item>
+
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-5>
+        <ion-label> 甲方和业主签订合同</ion-label>
+      </ion-col>
+      <ion-col col-7>
+        <ion-list radio-group class="choose" [(ngModel)]="paramObj.party_a_owner_contract">
+
+          <ion-item>
+            <ion-label>无</ion-label>
+            <ion-radio value="0"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>有</ion-label>
+            <ion-radio value="1"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>全部</ion-label>
+            <ion-radio value="2"></ion-radio>
+          </ion-item>
+
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="danger" (click)="reset()">
+    <ion-title>重新筛选条件</ion-title>
+  </ion-toolbar>
+</ion-footer>

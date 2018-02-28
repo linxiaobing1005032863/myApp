@@ -1,0 +1,143 @@
+<ion-header>
+  
+    <ion-navbar color="primary">
+      <ion-title>填写企业需求</ion-title>
+      <ion-buttons end>
+        <button ion-button icon-only color="royal" (click)="submit(type)">
+          保存
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  
+  </ion-header>
+  <ion-content id="companyAdd">
+  
+  <ion-list  class="fillInlist">
+    <ion-item class="sm-headline">
+      <ion-icon name="my-project" md="md-my-project" color="primary" class="sm-icon"></ion-icon>企业信息
+      <ion-icon name="ios-arrow-down" item-right *ngIf="!isShow" (click)="isShow=!isShow" class="arrow"></ion-icon>
+      <ion-icon name="ios-arrow-forward" item-right *ngIf="isShow" (click)="isShow=!isShow" class="arrow"></ion-icon>
+    </ion-item>
+    <ion-list *ngIf="!isShow">
+      <ion-item>
+        <ion-label>
+          <i>*</i>企业名称</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addProject.company"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          公司成立时间</ion-label>
+          <ion-datetime displayFormat="YYYY-MM-DD" min="2000" max="2030-10-31" cancelText="取消" doneText="确定" [(ngModel)]="addProject.createCompanyTime"></ion-datetime>
+          
+        <!-- <ion-input type="text" item-right [(ngModel)]="addProject.createCompanyTime"></ion-input> -->
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <i>*</i>公司类型</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addProject.companyType"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <i>*</i>主要产品和服务</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addProject.products"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          注册资金</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addProject.money"></ion-input>
+      </ion-item>
+      <ion-item (click)="showAreasSelect()">
+        <ion-label>
+          <i>*</i>地区</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="city" readonly></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <i>*</i>企业邮箱</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addProject.companyEmail"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          企业网站</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addProject.website"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <i>*</i>企业电话</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addProject.companyPhone"></ion-input>
+      </ion-item>
+      
+    </ion-list>
+    </ion-list>
+
+    <ion-list  class="fillInlist">
+      <ion-item class="sm-headline">
+        <ion-icon name="my-project" md="md-my-project" color="primary" class="sm-icon"></ion-icon>联系人信息
+        <ion-icon name="ios-arrow-down" item-right *ngIf="!isShow2" (click)="isShow2=!isShow2" class="arrow"></ion-icon>
+        <ion-icon name="ios-arrow-forward" item-right *ngIf="isShow2" (click)="isShow2=!isShow2" class="arrow"></ion-icon>
+      </ion-item>
+      <ion-list *ngIf="!isShow2">
+        <ion-item>
+          <ion-label>
+            <i>*</i>联系人姓名</ion-label>
+          <ion-input type="text" item-right [(ngModel)]="addProject.name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            <i>*</i>联系人性别</ion-label>
+            <ion-select [(ngModel)]="addProject.sex" cancelText="取消" okText="确定">
+              <ion-option value="男">男</ion-option>
+              <ion-option value="女">女</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            <i>*</i>联系人职位</ion-label>
+          <ion-input type="text" item-right [(ngModel)]="addProject.position"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            <i>*</i>联系人电话</ion-label>
+          <ion-input type="text" item-right [(ngModel)]="addProject.phone"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            联系人微信</ion-label>
+          <ion-input type="text" item-right [(ngModel)]="addProject.wechat"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            业务类型</ion-label>
+          <ion-input type="text" item-right [(ngModel)]="addProject.businessType"></ion-input>
+        </ion-item>
+      </ion-list>
+      </ion-list>
+
+
+      <ion-list  class="fillInlist">
+        <ion-item class="sm-headline">
+          <ion-icon name="my-project" md="md-my-project" color="primary" class="sm-icon"></ion-icon>需求信息
+          <ion-icon name="ios-arrow-down" item-right *ngIf="!isShow3" (click)="isShow3=!isShow3" class="arrow"></ion-icon>
+          <ion-icon name="ios-arrow-forward" item-right *ngIf="isShow3" (click)="isShow3=!isShow3" class="arrow"></ion-icon>
+        </ion-item>
+        <ion-list *ngIf="!isShow3">
+          <ion-item>
+            <ion-label>
+              项目类型</ion-label>
+            <ion-input type="text" item-right [(ngModel)]="addProject.projectType"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              项目说明</ion-label>
+            <ion-input type="text" item-right [(ngModel)]="addProject.description"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              备注</ion-label>
+            <ion-input type="text" item-right [(ngModel)]="addProject.remark"></ion-input>
+          </ion-item>
+        </ion-list>
+        </ion-list>
+
+  </ion-content>
+  <areas-select #areasSelect (cancel)="closeSelect()" (done)="done($event)"></areas-select>

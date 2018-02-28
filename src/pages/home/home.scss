@@ -1,0 +1,90 @@
+page-home {
+  ion-header {
+    .toolbar-title {
+      font-size: 18px;
+    }
+  }
+  #clientIndex {
+    text-align: center;
+    .amount {
+      background: $themeColor;
+      padding-top: 35px;
+      padding-bottom: 20px;
+      .col:first-child {
+        border-right: 1px solid $white;
+      }
+      span {
+        color: #fffefe;
+        font-size: 35px;
+        text-decoration: none;
+        margin-bottom: 35px;
+      }
+      p {
+        color: #fffefe;
+        font-size: 15px;
+      }
+    }
+    .insideNav {
+      font-size: 15px;
+      border-bottom: 3px solid #f4f4f4;
+      padding: 0;
+      background: #fff;
+      .col {
+        @include center;
+        height: 50px;
+        &:nth-child(2) {
+          border-left: 3px solid #f4f4f4;
+          border-right: 3px solid #f4f4f4;
+        }
+      }
+    }
+    .fun {
+      background: #fff;
+      h5 {
+        text-align: left;
+        font-size: 16px;
+        color: $fontColor;
+        padding-left: 20px;
+        margin-top: 14px;
+        margin-bottom: 20px;
+      }
+      .col {
+        @include center;
+        flex-direction: column;
+        .bg-color {
+          width: 55px;
+          height: 55px;
+          @include center;
+          border-radius: 15px;
+        }
+        .model-blue {
+          background: linear-gradient(to right bottom, #00d8ff, #00b1ff);
+        }
+        .model-yellow {
+          background: linear-gradient(to right bottom, #ffcd48, #ffa248);
+        }
+        .model-pink {
+          background: linear-gradient(to right bottom, #fe688d, #f4416d);
+        }
+        .model-green {
+          background: linear-gradient(to right bottom, #1fd3a1, #1bc373);
+        }
+        .model-purple {
+          // background: linear-gradient(to right bottom, #64a1f4, #6468f4);
+          border: 1px dashed #b3b3b3;
+          border-radius: 0;
+          ion-icon {
+            color: #b3b3b3;
+            font-size: 22px;
+          }
+        }
+        .bottom-text {
+          color: #666;
+          font-size: 13px;
+          margin-top: 6px;
+          margin-bottom: 6px;
+        }
+      }
+    }
+  }
+}

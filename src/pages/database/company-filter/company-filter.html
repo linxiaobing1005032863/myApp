@@ -1,0 +1,41 @@
+<ion-header id="filterCT">
+
+  <ion-navbar color="primary">
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">返回</button>
+    </ion-buttons>
+    <ion-title>企业筛选条件</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only class="submit" (click)="submit()">
+        提交
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content id="filterCB">
+  <ion-list>
+    <ion-item>
+      <ion-label>企业名称</ion-label>
+      <ion-input type="text" item-right [(ngModel)]="paramObj.company_name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>公司类型</ion-label>
+      <ion-input type="text" item-right [(ngModel)]="paramObj.company_type"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>地区</ion-label>
+      <ion-multi-picker item-content [multiPickerColumns]="cityColumns" [cancelText]="'取消'" [doneText]="'完成'" (ionChange)="getAddress()"
+      [(ngModel)]="paramObj.address"></ion-multi-picker>
+    </ion-item>
+
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="danger" (click)="reset()">
+    <ion-title>重新筛选条件</ion-title>
+  </ion-toolbar>
+</ion-footer>

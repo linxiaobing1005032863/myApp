@@ -1,0 +1,21 @@
+my-radio {
+    .dpflex {
+        display: flex;
+        .radio {
+                width: 22px;
+                height: 22px;
+                border: 1px solid gray;
+                border-radius: 1.1rem;
+                justify-content: center;
+                align-items: center;
+                margin: 0 5px;
+                i{
+                    width: 18px;
+                    height:18px;
+                    border-radius: 10px;
+                    background: limegreen;
+                    margin-right: 0!important;
+                }
+        }
+    }
+}

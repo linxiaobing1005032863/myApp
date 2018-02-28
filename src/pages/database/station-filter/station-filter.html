@@ -1,0 +1,60 @@
+<ion-header id="filterST">
+
+  <ion-navbar color="primary">
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">返回</button>
+    </ion-buttons>
+    <ion-title>站点筛选条件</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only class="submit" (click)="submit()">
+        提交
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content id="filterSB">
+  <ion-list>
+    <ion-item>
+      <ion-label>站点类型</ion-label>
+      <ion-input type="text" item-right [(ngModel)]="paramObj.site_type"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>站点区域</ion-label>
+      <ion-multi-picker item-content [multiPickerColumns]="cityColumns" [cancelText]="'取消'" [doneText]="'完成'" (ionChange)="getAddress()"
+      [(ngModel)]="paramObj.site_region"></ion-multi-picker>
+    </ion-item>
+    <ion-row>
+      <ion-col col-5>
+        <ion-label> 已有联系人</ion-label>
+      </ion-col>
+      <ion-col col-7>
+        <ion-list radio-group class="choose" [(ngModel)]="paramObj.whether_contact">
+
+          <ion-item>
+            <ion-label>无</ion-label>
+            <ion-radio value="0"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>有</ion-label>
+            <ion-radio value="1"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>全部</ion-label>
+            <ion-radio value="2"></ion-radio>
+          </ion-item>
+
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <ion-toolbar color="danger" (click)="reset()">
+    <ion-title>重新筛选条件</ion-title>
+  </ion-toolbar>
+</ion-footer>

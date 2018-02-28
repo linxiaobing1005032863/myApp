@@ -1,0 +1,61 @@
+<!--
+  Generated template for the DetailSeePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>任务详情</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="showConfirm()">
+        确认
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let list of todayTime">
+      <ion-checkbox (click)="helloWorld(list.id)"></ion-checkbox>
+      <ion-label color="primary">
+        <span class="blockSpan">{{list.content}}</span>
+        <span class="blockSpan">hsaashgsh</span>
+      </ion-label>
+      <ion-label color="primary">
+        <span class="inSpan">{{list.startTime.split(" ")[0]}}</span>
+        <span class="inSpan">{{list.startTime.split(" ")[1].substring(0,5)}}-{{list.endTime.split(" ")[1].substring(0,5)}}</span>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-list *ngIf="yesShow">已过期</ion-list>
+  <ion-list>
+    <ion-item *ngFor="let list of yesterTime">
+      <span style="display: none">{{list.id}}</span>
+      <ion-checkbox disabled></ion-checkbox>
+      <ion-label color="primary">
+        <span class="yestSpan">{{list.content}}</span>
+        <span class="yestSpan">hsaashgsh</span>
+      </ion-label>
+      <ion-label color="primary">
+        <span class="inyesSpan">{{list.startTime.split(" ")[0]}}</span>
+        <span class="inyesSpan">{{list.startTime.split(" ")[1].substring(0,5)}}-{{list.endTime.split(" ")[1].substring(0,5)}}</span>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-list *ngIf="sueShow">已完成</ion-list>
+  <ion-list>
+    <ion-item *ngFor="let list of sueTime">
+      <ion-checkbox (click)="helloWorld(list.id)"></ion-checkbox>
+      <ion-label color="primary">
+        <span class="sueSpan">{{list.content}}</span>
+        <span class="sueSpan">hsaashgsh</span>
+      </ion-label>
+      <ion-label color="primary">
+        <span class="insueSpan">{{list.startTime.split(" ")[0]}}</span>
+        <span class="insueSpan">{{list.startTime.split(" ")[1].substring(0,5)}}-{{list.endTime.split(" ")[1].substring(0,5)}}</span>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,6 @@
+page-company-filter {
+  #filterCT,
+  #filterCB {
+    @include filter;
+  }
+}

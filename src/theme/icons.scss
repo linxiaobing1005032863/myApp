@@ -1,0 +1,116 @@
+
+@font-face {font-family: "Ionicons";
+    src: url('../assets/fonts/iconfont.eot?t=1514425760712'); /* IE9*/
+    src: url('../assets/fonts/iconfont.eot?t=1514425760712#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../assets/fonts/iconfont.woff?t=1514425760712') format('woff'),
+    url('../assets/fonts/iconfont.ttf?t=1514425760712') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+    url('../assets/fonts/iconfont.svg?t=1514425760712#iconfont') format('svg'); /* iOS 4.1- */
+  }
+
+  .icon {
+    font-family:"Ionicons" !important;
+    font-size:28px;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+//通讯录
+.ion-ios-my-contacts:before { content: "\e600";}
+.ion-md-my-contacts:before { content: "\e600";}
+
+//关闭
+.ion-ios-my-close:before { content: "\e72c";}
+.ion-md-my-close:before { content: "\e72c";}
+
+//添加
+.ion-ios-my-add:before { content: "\e60d";}
+.ion-md-my-add:before { content: "\e60d";}
+
+//日历
+.ion-ios-my-calendar:before { content: "\e64d";}
+.ion-md-my-calendar:before { content: "\e64d";}
+
+//搜索
+.ion-ios-my-search:before { content: "\e601";}
+.ion-md-my-search:before { content: "\e601";}
+
+//资料库
+.ion-ios-my-database:before { content: "\e6fc";}
+.ion-md-my-database:before { content: "\e6fc";}
+
+//市场
+.ion-ios-my-market:before { content: "\e609";}
+.ion-md-my-market:before { content: "\e609";}
+
+//首页
+.ion-ios-my-home:before { content: "\e605";}
+.ion-md-my-home:before { content: "\e605";}
+.ion-ios-my-home-outline:before { content: "\e602";}
+
+//我的
+.ion-ios-my-mine:before { content: "\e60a";}
+.ion-md-my-mine:before { content: "\e60b";}
+.ion-ios-my-mine-outline:before { content: "\e60b";}
+
+//消息
+.ion-ios-my-message:before { content: "\e60f";}
+.ion-md-my-message:before { content: "\e60f";}
+.ion-ios-my-message-outline:before { content: "\e611";}
+
+//办公
+.ion-ios-my-work:before { content: "\e612";}
+.ion-md-my-work:before { content: "\e612";}
+.ion-ios-my-work-outline:before { content: "\e610";}
+
+//客户
+.ion-ios-my-client:before { content: "\e614";}
+.ion-md-my-client:before { content: "\e614";}
+
+//新建客户
+.ion-ios-my-add-client:before { content: "\e616";}
+.ion-md-my-add-client:before { content: "\e616";}
+
+//客户进度
+.ion-ios-my-clinet-progress:before { content: "\e615";}
+.ion-md-my-clinet-progress:before { content: "\e615";}
+
+//项目
+.ion-ios-my-project:before { content: "\e734";}
+.ion-md-my-project:before { content: "\e734";}
+
+//任务分配
+.ion-ios-my-time:before { content: "\e623";}
+.ion-md-my-time:before { content: "\e623";}
+
+//确认完成
+.ion-ios-my-finsh:before { content: "\e640";}
+.ion-md-my-finsh:before { content: "\e640";}
+
+//确认接收
+.ion-ios-my-receive:before { content: "\e641";}
+.ion-md-my-receive:before { content: "\e641";}
+
+//手动审核
+.ion-ios-my-manual:before { content: "\e624";}
+.ion-md-my-manual:before { content: "\e624";}
+
+//语音审核
+.ion-ios-my-voice:before { content: "\e62a";}
+.ion-md-my-voice:before { content: "\e62a";}
+
+//任务上报
+.ion-ios-my-reported:before { content: "\e646";}
+.ion-md-my-reported:before { content: "\e646";}
+
+//再次分发
+.ion-ios-my-distribute:before { content: "\e645";}
+.ion-md-my-distribute:before { content: "\e645";}
+
+//完成情况
+.ion-ios-my-complete:before { content: "\e644";}
+.ion-md-my-complete:before { content: "\e644";}
+
+//文件显示
+.ion-ios-my-file:before { content: "\e637";}
+.ion-md-my-file:before { content: "\e637";}

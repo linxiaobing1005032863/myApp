@@ -1,0 +1,957 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>新建</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="royal" (click)="submit(type)">
+        保存
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content id="addDB">
+  <ion-item class="topNav">
+    <ion-label>类型</ion-label>
+    <ion-select [(ngModel)]="type" cancelText="取消" okText="确定">
+      <ion-option value="项目信息表">项目信息表</ion-option>
+      <ion-option value="业主客户表">业主客户表</ion-option>
+      <ion-option value="企业客户表">企业客户表</ion-option>
+      <ion-option value="站点表">站点表</ion-option>
+    </ion-select>
+  </ion-item>
+
+
+  <!-- 项目信息表 -->
+  <ion-list *ngIf="type=='项目信息表'" class="fillInlist">
+
+    <ion-item class="sm-headline">
+      <ion-icon name="my-project" md="md-my-project" color="primary" class="sm-icon"></ion-icon>项目信息
+      <ion-icon name="ios-arrow-down" item-right *ngIf="!isShow" (click)="isShow=!isShow" class="arrow"></ion-icon>
+      <ion-icon name="ios-arrow-forward" item-right *ngIf="isShow" (click)="isShow=!isShow" class="arrow"></ion-icon>
+    </ion-item>
+
+    <ion-list *ngIf="!isShow">
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>项目名称</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addProject.project_name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>项目类型</ion-label>
+        <ion-select [(ngModel)]="addProject.project_type" cancelText="取消" okText="确定">
+          <ion-option value="宏站">宏站</ion-option>
+          <ion-option value="基站">基站</ion-option>
+          <ion-option value="驻地网">驻地网</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>业务类型</ion-label>
+        <ion-select [(ngModel)]="addProject.business_type" cancelText="取消" okText="确定">
+          <ion-option value="通讯类">通讯类</ion-option>
+          <ion-option value="软件类">软件类</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>项目收集时间</ion-label>
+        <ion-datetime displayFormat="YYYY-MM-DD HH:mm" min="2000" max="2030-10-31" cancelText="取消" doneText="确定" [(ngModel)]="addProject.project_collect_time"></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>项目创建人</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addProject.founder"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>重要级别</ion-label>
+        <ion-select [(ngModel)]="addProject.important_level" cancelText="取消" okText="确定">
+          <ion-option value="一般">一般</ion-option>
+          <ion-option value="重要">重要</ion-option>
+          <ion-option value="非常重要">非常重要</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>项目地区</ion-label>project_address
+        <ion-multi-picker item-content [multiPickerColumns]="cityColumns" [cancelText]="'取消'" [doneText]="'完成'" (ionChange)="getAddress('project')"
+          [(ngModel)]="addProject.project_address"></ion-multi-picker>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>数据来源</ion-label>
+        <ion-select [(ngModel)]="addProject.data_source" cancelText="取消" okText="确定">
+          <ion-option value="中标单位上传">中标单位上传</ion-option>
+          <ion-option value="业主上传">业主上传</ion-option>
+          <ion-option value="业务员上传">业务员上传</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>甲方公司</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addProject.party_a_company"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>中标单位名称</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addProject.bid_company"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>项目规模</ion-label>
+        <ion-input type="number" item-right [(ngModel)]="addProject.project_scale" class="project-count"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>项目金额</ion-label>
+        <ion-input type="number" item-right [(ngModel)]="addProject.project_money" class="project-money"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>项目计划开工时间</ion-label>
+        <ion-datetime displayFormat="YYYY-MM-DD" min="2000" max="2030-10-31" cancelText="取消" doneText="确定" [(ngModel)]="addProject.project_start_time"></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>项目计划竣工时间</ion-label>
+        <ion-datetime displayFormat="YYYY-MM-DD" min="2000" max="2030-10-31" cancelText="取消" doneText="确定" [(ngModel)]="addProject.project_completed_time"></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>甲方项目负责人</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addProject.party_a_responsible"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>甲方负责人(电话)</ion-label>
+        <ion-input type="number" item-right [(ngModel)]="addProject.party_a_responsible_phone"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>中标单位项目负责人</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addProject.bid_contract_responsible"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>中标单位负责人(电话)</ion-label>
+        <ion-input type="number" item-right [(ngModel)]="addProject.bid_contract_responsible_phone"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>监理单位</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addProject.supervisor_company"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>设计单位</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addProject.design_company"></ion-input>
+      </ion-item>
+
+      <my-radio buttonColor='#32db64' required=true title='是否已有选址政策' [(radio)]='addProject.whether_site_selection'>
+      </my-radio>
+
+      <div *ngIf="addProject.whether_site_selection==true">
+
+        <ion-item class="ownerLandlordCompact">
+          <i>*</i>上传附件
+          <span style="font-size:12px;">(仅能上传一份)</span>
+          <div class="accessory">
+            <div class="image" (click)="chooserFile('photo4')">
+              <img class="img" src="assets/imgs/addImage.png">
+            </div>
+            <div class="image" *ngIf="shows">
+              <img class="img" src="{{prefix + photoS}}" (click)="showBig(prefix + photoS)" *ngIf="isImageS">
+              <a class="bg-color model-blue" *ngIf="!isImageS" href='{{prefix + photoS}}'>
+                <ion-icon name="my-file" md="md-my-file" color="light" clear></ion-icon>
+              </a>
+              <i (click)="delImage('photo4')">
+                <img src="assets/imgs/close.png">
+              </i>
+            </div>
+          </div>
+        </ion-item>
+
+      </div>
+
+    </ion-list>
+  </ion-list>
+
+  <ion-list *ngIf="type=='项目信息表'" class="fillInlist">
+
+    <ion-item class="sm-headline">
+      <ion-icon name="my-project" md="md-my-project" color="primary" class="sm-icon"></ion-icon>项目合同信息
+      <ion-icon name="ios-arrow-down" item-right *ngIf="!isShow1" (click)="isShow1=!isShow1" class="arrow"></ion-icon>
+      <ion-icon name="ios-arrow-forward" item-right *ngIf="isShow1" (click)="isShow1=!isShow1" class="arrow"></ion-icon>
+    </ion-item>
+
+    <ion-list *ngIf="!isShow1">
+
+      <my-radio buttonColor='#32db64' required=true title='甲方和中标单位的合同' [(radio)]='addProject.party_a_bid_contract'>
+      </my-radio>
+
+      <div *ngIf="addProject.party_a_bid_contract==true">
+
+        <ion-item>
+          <ion-label>
+            <i>*</i>合同签订时间</ion-label>
+          <ion-datetime displayFormat="YYYY-MM-DD" min="2000" max="2030-10-31" cancelText="取消" doneText="确定" [(ngModel)]="addProject.party_a_bid_contract_sign_time"></ion-datetime>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>
+            <i>*</i>合同开始时间</ion-label>
+          <ion-datetime displayFormat="YYYY-MM-DD" min="2000" max="2030-10-31" cancelText="取消" doneText="确定" [(ngModel)]="addProject.party_a_bid_contract_start_time"></ion-datetime>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>
+            <i>*</i>合同结束时间</ion-label>
+          <ion-datetime displayFormat="YYYY-MM-DD" min="2000" max="2030-10-31" cancelText="取消" doneText="确定" [(ngModel)]="addProject.party_a_bid_contract_end_time"></ion-datetime>
+        </ion-item>
+
+        <ion-item class="ownerCompactImg">
+          <i>*</i>上传合同附件
+          <span style="font-size:12px;">(仅能上传一份)</span>
+          <div class="accessory">
+            <div class="image" (click)="chooserFile('photo1')">
+              <img class="img" src="assets/imgs/addImage.png">
+            </div>
+
+            <div class="image" *ngIf="showp">
+              <img class="img" src="{{prefix + photoP}}" (click)="showBig(prefix + photoP)" *ngIf="isImageP">
+              <a class="bg-color model-blue" *ngIf="!isImageP" href='{{prefix + photoP}}'>
+                <ion-icon name="my-file" md="md-my-file" color="light" clear></ion-icon>
+              </a>
+              <i (click)="delImage('photo1')">
+                <img src="assets/imgs/close.png">
+              </i>
+            </div>
+          </div>
+
+        </ion-item>
+      </div>
+
+      <my-radio buttonColor='#32db64' required=true title='与中标单位的合同' [(radio)]='addProject.bid_contract'>
+      </my-radio>
+
+      <div *ngIf="addProject.bid_contract==true">
+
+        <ion-item>
+          <ion-label>
+            <i>*</i>合同签订时间</ion-label>
+          <ion-datetime displayFormat="YYYY-MM-DD" min="2000" max="2030-10-31" cancelText="取消" doneText="确定" [(ngModel)]="addProject.bid_contract_sign_time"></ion-datetime>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>
+            <i>*</i>合同开始时间</ion-label>
+          <ion-datetime displayFormat="YYYY-MM-DD" min="2000" max="2030-10-31" cancelText="取消" doneText="确定" [(ngModel)]="addProject.bid_contract_start_time"></ion-datetime>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>
+            <i>*</i>合同结束时间</ion-label>
+          <ion-datetime displayFormat="YYYY-MM-DD" min="2000" max="2030-10-31" cancelText="取消" doneText="确定" [(ngModel)]="addProject.bid_contract_end_time"></ion-datetime>
+        </ion-item>
+
+        <ion-item class="unitCompact">
+          <i>*</i>上传合同附件
+          <span style="font-size:12px;">(仅能上传一份)</span>
+          <div class="accessory">
+            <div class="image" (click)="chooserFile('photo3')">
+              <img class="img" src="assets/imgs/addImage.png">
+            </div>
+
+            <div class="image" *ngIf="showc">
+              <img class="img" src="{{prefix + photoC}}" (click)="showBig(prefix + photoC)" *ngIf="isImageC">
+              <a class="bg-color model-blue" *ngIf="!isImageC" href='{{prefix + photoC}}'>
+                <ion-icon name="my-file" md="md-my-file" color="light" clear></ion-icon>
+              </a>
+              <i (click)="delImage('photo3')">
+                <img src="assets/imgs/close.png">
+              </i>
+            </div>
+          </div>
+        </ion-item>
+
+      </div>
+
+    </ion-list>
+  </ion-list>
+
+  <!-- 业主客户表 -->
+  <ion-list *ngIf="type=='业主客户表'" class="fillInlist">
+
+    <ion-item class="sm-headline">
+      <ion-icon name="my-project" md="md-my-project" color="primary" class="sm-icon"></ion-icon>客户信息
+      <ion-icon name="ios-arrow-down" item-right *ngIf="!isShow" (click)="isShow=!isShow" class="arrow"></ion-icon>
+      <ion-icon name="ios-arrow-forward" item-right *ngIf="isShow" (click)="isShow=!isShow" class="arrow"></ion-icon>
+    </ion-item>
+
+    <ion-list *ngIf="!isShow">
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>客户姓名</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addOwner.customer_name"></ion-input>
+      </ion-item>
+
+      <my-radio buttonColor='#32db64' required=true title='客户性别' option1='女' option2='男' [(radio)]='addOwner.customer_sex'>
+      </my-radio>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>客户年龄</ion-label>
+        <ion-input type="number" item-right [(ngModel)]="addOwner.customer_age"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>客户状态</ion-label>
+        <ion-select cancelText="取消" okText="确定" [(ngModel)]="addOwner.customer_status">
+          <ion-option value="已完成项目客户">已完成项目客户</ion-option>
+          <ion-option value="现项目客户">现项目客户</ion-option>
+          <ion-option value="潜在客户">潜在客户</ion-option>
+          <ion-option value="失败客户">失败客户</ion-option>
+          <ion-option value="已流失客户">已流失客户</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>客户职位</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addOwner.customer_position"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>客户电话</ion-label>
+        <ion-input type="number" item-right [(ngModel)]="addOwner.customer_phone"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>重要级别</ion-label>
+        <ion-select cancelText="取消" okText="确定" [(ngModel)]="addOwner.important_level">
+          <ion-option value="一般">一般</ion-option>
+          <ion-option value="重要">重要</ion-option>
+          <ion-option value="非常重要">非常重要</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>地区</ion-label>
+        <ion-multi-picker item-content [multiPickerColumns]="cityColumns" [cancelText]="'取消'" [doneText]="'完成'" (ionChange)="getAddress('owner')"
+          [(ngModel)]="addOwner.region"></ion-multi-picker>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>地址</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addOwner.address"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>数据来源</ion-label>
+        <ion-select cancelText="取消" okText="确定" [(ngModel)]="addOwner.data_source">
+          <ion-option value="中标单位上传">中标单位上传</ion-option>
+          <ion-option value="业主上传">业主上传</ion-option>
+          <ion-option value="业务员上传">业务员上传</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>对应的站点地址</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addOwner.site_address"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>对应的站点经度</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addOwner.longitude"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>对应的站点纬度</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addOwner.latitude"></ion-input>
+      </ion-item>
+
+      <my-radio buttonColor='#32db64' required=true title='对应的现网状态' option1='有现网' option2='无现网' [(radio)]='addOwner.current_network_state'>
+      </my-radio>
+
+      <ion-item>
+        <ion-label>对应的站点状态</ion-label>
+        <ion-select cancelText="取消" okText="确定" [(ngModel)]="addOwner.site_state" *ngIf="addOwner.current_network_state==true">
+          <ion-option value="无需改造">无需改造</ion-option>
+          <ion-option value="改造2G&3G&4G">改造2G&3G&4G</ion-option>
+          <ion-option value="改造2G&3G">改造2G&3G</ion-option>
+          <ion-option value="改造2G&4G">改造2G&4G</ion-option>
+          <ion-option value="改造3G&4G">改造3G&4G</ion-option>
+        </ion-select>
+
+        <ion-select cancelText="取消" okText="确定" [(ngModel)]="addOwner.site_state" *ngIf="addOwner.current_network_state==false">
+          <ion-option value="无需新建">无需新建</ion-option>
+          <ion-option value="新建2G">新建2G</ion-option>
+          <ion-option value="新建3G">新建3G</ion-option>
+          <ion-option value="新建4G">新建4G</ion-option>
+          <ion-option value="新建2G&3G&4G">新建2G&3G&4G</ion-option>
+          <ion-option value="新建2G&3G">新建2G&3G</ion-option>
+          <ion-option value="新建2G&4G">新建2G&4G</ion-option>
+          <ion-option value="新建3G&4G">新建3G&4G</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>对应的归属运营商</ion-label>
+        <ion-select cancelText="取消" okText="确定" [(ngModel)]="addOwner.operator">
+          <ion-option value="中国联通">中国联通</ion-option>
+          <ion-option value="中国移动">中国移动</ion-option>
+          <ion-option value="中国电信">中国电信</ion-option>
+          <ion-option value="中国广电">中国广电</ion-option>
+          <ion-option value="中国铁塔">中国铁塔</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>对应的站点类型</ion-label>
+        <ion-select cancelText="取消" okText="确定" [(ngModel)]="addOwner.site_type">
+          <ion-option value="微战">微战</ion-option>
+          <ion-option value="宏站">宏站</ion-option>
+          <ion-option value="驻地网">驻地网</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>客户微信</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addOwner.customer_WeChat"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>客户脾气</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addOwner.customer_temper"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>客户兴趣</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addOwner.customer_interest"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>共同认识的人</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addOwner.know_people"></ion-input>
+      </ion-item>
+
+      <my-radio buttonColor='#32db64' title='业主提供的身份证明' [(radio)]='addOwner.identity_prove'>
+      </my-radio>
+
+      <div *ngIf="addOwner.identity_prove==true">
+        <ion-item class="ownerCompactImg">
+          <i>*</i>上传证明
+          <span style="font-size:12px;">(最多允许上传6份)</span>
+          <p style="font-size:12px;">(房产证、单位授权证明、土地使用证、营业执照信息)</p>
+          <div class="accessory">
+            <div class="image" (click)="addProve()">
+              <img class="img" src="assets/imgs/addImage.png">
+            </div>
+
+            <div *ngFor="let item of showProve;let i = index;" class="image">
+              <img class="img" src="{{prefix + item.url}}" (click)="showBig(prefix + item.url)" *ngIf="item.isImage">
+              <a href="{{prefix + item.url}}" *ngIf="!item.isImage">
+                <img class="img" src="assets/imgs/fileImg.png">
+              </a>
+              <i (click)="delProve(i)">
+                <img src="assets/imgs/close.png">
+              </i>
+            </div>
+
+          </div>
+        </ion-item>
+      </div>
+    </ion-list>
+  </ion-list>
+
+  <ion-list *ngIf="type=='业主客户表'" class="fillInlist">
+
+    <ion-item class="sm-headline">
+      <ion-icon name="my-project" md="md-my-project" color="primary" class="sm-icon"></ion-icon>设备环境搭建信息
+      <ion-icon name="ios-arrow-down" item-right *ngIf="!isShow1" (click)="isShow1=!isShow1" class="arrow"></ion-icon>
+      <ion-icon name="ios-arrow-forward" item-right *ngIf="isShow1" (click)="isShow1=!isShow1" class="arrow"></ion-icon>
+    </ion-item>
+
+    <ion-list *ngIf="!isShow1">
+      <ion-item>
+        <ion-label>建筑类型</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addOwner.architecture_type"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>空间大小</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addOwner.space_size"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>供电情况</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addOwner.power_supply_situation"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>供电价格</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addOwner.power_supply_price"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>空调排水</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addOwner.air_conditioning_drainage"></ion-input>
+      </ion-item>
+
+      <my-radio buttonColor='#32db64' title='接地' [(radio)]='addOwner.ground'>
+      </my-radio>
+
+      <ion-item>
+        <ion-label>传输路由</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addOwner.transmission_routing"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>承重</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addOwner.bearing"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>手机网络信号情况</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addOwner.phone_network_signal"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>周围辐射情况</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addOwner.radiation_condition"></ion-input>
+      </ion-item>
+
+    </ion-list>
+  </ion-list>
+
+  <!-- 企业客户表 -->
+  <ion-list *ngIf="type=='企业客户表'" class="fillInlist">
+
+    <ion-item class="sm-headline">
+      <ion-icon name="my-project" md="md-my-project" color="primary" class="sm-icon"></ion-icon>企业信息
+      <ion-icon name="ios-arrow-down" item-right *ngIf="!isShow2" (click)="isShow2=!isShow2" class="arrow"></ion-icon>
+      <ion-icon name="ios-arrow-forward" item-right *ngIf="isShow2" (click)="isShow2=!isShow2" class="arrow"></ion-icon>
+    </ion-item>
+
+    <ion-list *ngIf="!isShow2">
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>企业名称</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addCompany.company_name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>公司成立时间</ion-label>
+        <ion-datetime displayFormat="YYYY-MM-DD" min="2000" max="2030-10-31" cancelText="取消" doneText="确定" [(ngModel)]="addCompany.company_establish_time"></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>公司类型</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addCompany.company_type"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>主要产品和服务</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addCompany.main_service_product"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>注册资金</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addCompany.registered_capital"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>地区</ion-label>
+        <ion-multi-picker item-content [multiPickerColumns]="cityColumns" [cancelText]="'取消'" [doneText]="'完成'" (ionChange)="getAddress('company')"
+          [(ngModel)]="addCompany.address"></ion-multi-picker>
+
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>企业经度</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addCompany.longitude"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>企业纬度</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addCompany.latitude"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>数据来源</ion-label>
+        <ion-select cancelText="取消" okText="确定" [(ngModel)]="addCompany.data_source">
+          <ion-option value="中标单位上传">中标单位上传</ion-option>
+          <ion-option value="业主上传">业主上传</ion-option>
+          <ion-option value="业务员上传">业务员上传</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>企业邮箱</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addCompany.company_email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>企业网站</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addCompany.company_web"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>企业电话</ion-label>
+        <ion-input type="number" item-right [(ngModel)]="addCompany.company_tel"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>公司地址</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addCompany.company_address"></ion-input>
+      </ion-item>
+
+      <my-radio buttonColor='#32db64' title='是否已有合作项目' option1='是' option2='否' [(radio)]="addCompany.whether_cooperation_company
+      ">
+      </my-radio>
+
+    </ion-list>
+  </ion-list>
+
+  <ion-list *ngIf="type=='企业客户表'" class="fillInlist">
+    <ion-item class="sm-headline">
+      <ion-icon name="my-project" md="md-my-project" color="primary" class="sm-icon"></ion-icon>联系人信息
+      <ion-icon name="ios-arrow-down" item-right *ngIf="!isShow3" (click)="isShow3=!isShow3" class="arrow"></ion-icon>
+      <ion-icon name="ios-arrow-forward" item-right *ngIf="isShow3" (click)="isShow3=!isShow3" class="arrow"></ion-icon>
+    </ion-item>
+    <ion-list *ngIf="!isShow3">
+      <ion-item>
+        <ion-label>
+          <i>*</i>联系人姓名</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addCompany.contacts_username"></ion-input>
+      </ion-item>
+
+      <my-radio buttonColor='#32db64' required=true title='联系人性别' option1='女' option2='男' [(radio)]="addCompany.contacts_sex">
+      </my-radio>
+
+      <ion-item>
+        <ion-label>
+          联系人职位</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addCompany.contacts_position"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>联系人电话</ion-label>
+        <ion-input type="number" item-right [(ngModel)]="addCompany.contacts_tel"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          联系人微信</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addCompany.contacts_WeChat"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          联系人邮箱</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addCompany.contacts_email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          联系人脾气</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addCompany.contacts_temper"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          联系人兴趣</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addCompany.contacts_interest"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          共同认识的人</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addCompany.know_people"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          备注</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addCompany.remark"></ion-input>
+      </ion-item>
+
+    </ion-list>
+  </ion-list>
+
+  <!-- 站点表 -->
+  <ion-list *ngIf="type=='站点表'" class="fillInlist">
+
+    <ion-item class="sm-headline">
+      <ion-icon name="my-project" md="md-my-project" color="primary" class="sm-icon"></ion-icon>站点信息
+      <ion-icon name="ios-arrow-down" item-right *ngIf="!isShow2" (click)="isShow2=!isShow2" class="arrow"></ion-icon>
+      <ion-icon name="ios-arrow-forward" item-right *ngIf="isShow2" (click)="isShow2=!isShow2" class="arrow"></ion-icon>
+    </ion-item>
+
+    <ion-list *ngIf="!isShow2">
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>站点名称</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addStation.site_name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>站点类型</ion-label>
+        <ion-select cancelText="取消" okText="确定" [(ngModel)]="addStation.site_type">
+          <ion-option value="宏站">宏站</ion-option>
+          <ion-option value="基站">基站</ion-option>
+          <ion-option value="驻地网">驻地网</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>站点区域</ion-label>
+        <ion-multi-picker item-content [multiPickerColumns]="cityColumns" [cancelText]="'取消'" [doneText]="'完成'" (ionChange)="getAddress('site')"
+          [(ngModel)]="addStation.site_region"></ion-multi-picker>
+      </ion-item>
+
+      <my-radio buttonColor='#32db64' required=true title='现网状态' option1='有现网' option2='无现网' [(radio)]='addStation.current_network_state'>
+      </my-radio>
+
+      <ion-item>
+        <ion-label>站点状态</ion-label>
+        <ion-select cancelText="取消" okText="确定" [(ngModel)]="addStation.site_state" *ngIf="addStation.current_network_state==true">
+          <ion-option value="无需改造">无需改造</ion-option>
+          <ion-option value="改造2G&3G&4G">改造2G&3G&4G</ion-option>
+          <ion-option value="改造2G&3G">改造2G&3G</ion-option>
+          <ion-option value="改造2G&4G">改造2G&4G</ion-option>
+          <ion-option value="改造3G&4G">改造3G&4G</ion-option>
+        </ion-select>
+
+        <ion-select cancelText="取消" okText="确定" [(ngModel)]="addStation.site_state" *ngIf="addStation.current_network_state==false">
+          <ion-option value="无需新建">无需新建</ion-option>
+          <ion-option value="新建2G">新建2G</ion-option>
+          <ion-option value="新建3G">新建3G</ion-option>
+          <ion-option value="新建4G">新建4G</ion-option>
+          <ion-option value="新建2G&3G&4G">新建2G&3G&4G</ion-option>
+          <ion-option value="新建2G&3G">新建2G&3G</ion-option>
+          <ion-option value="新建2G&4G">新建2G&4G</ion-option>
+          <ion-option value="新建3G&4G">新建3G&4G</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>归属运营商</ion-label>
+        <ion-select cancelText="取消" okText="确定" [(ngModel)]="addStation.operator">
+          <ion-option value="中国联通">中国联通</ion-option>
+          <ion-option value="中国移动">中国移动</ion-option>
+          <ion-option value="中国电信">中国电信</ion-option>
+          <ion-option value="中国广电">中国广电</ion-option>
+          <ion-option value="中国铁塔">中国铁塔</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>设计院</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addStation.design_institute"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>监理</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addStation.supervisor"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>站点地址</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addStation.site_address"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>总投资</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addStation.total_investment"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>集成费</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addStation.integration_fee"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>站点经度</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addStation.longitude"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>站点纬度</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addStation.latitude"></ion-input>
+      </ion-item>
+
+      <my-radio buttonColor='#32db64' required=true title='是否选址输出' option1='是' option2='否' [(radio)]='addStation.whether_address'>
+      </my-radio>
+
+      <my-radio *ngIf="addStation.whether_address==true" buttonColor='#32db64' required=true title='是否已入场' option1='是' option2='否'
+        [(radio)]='addStation.whether_admission'>
+      </my-radio>
+
+      <div *ngIf="addStation.whether_admission==true && addStation.whether_address==true">
+        <ion-item>
+          <ion-label>
+            <i>*</i>入场日期</ion-label>
+          <ion-datetime displayFormat="YYYY-MM-DD" min="2000" max="2030-10-31" cancelText="取消" doneText="确定" [(ngModel)]="addStation.admission_time"></ion-datetime>
+        </ion-item>
+      </div>
+
+      <my-radio *ngIf="addStation.whether_admission==true && addStation.whether_address==true" buttonColor='#32db64' required=true
+        title='是否完工' option1='是' option2='否' [(radio)]='addStation.whether_finished'>
+      </my-radio>
+
+      <div *ngIf="addStation.whether_finished==true && addStation.whether_admission==true && addStation.whether_address==true">
+        <ion-item>
+          <ion-label>
+            <i>*</i>完工日期</ion-label>
+          <ion-datetime displayFormat="YYYY-MM-DD" min="2000" max="2030-10-31" cancelText="取消" doneText="确定" [(ngModel)]="addStation.finished_time"></ion-datetime>
+        </ion-item>
+      </div>
+
+      <my-radio *ngIf="addStation.whether_finished==true && addStation.whether_admission==true && addStation.whether_address==true"
+        buttonColor='#32db64' required=true title='是否开通' option1='是' option2='否' [(radio)]='addStation.whether_open'>
+      </my-radio>
+
+      <div *ngIf="addStation.whether_open==true && addStation.whether_finished==true && addStation.whether_admission==true && addStation.whether_address==true">
+        <ion-item>
+          <ion-label>
+            <i>*</i>开通日期</ion-label>
+          <ion-datetime displayFormat="YYYY-MM-DD" min="2000" max="2030-10-31" cancelText="取消" doneText="确定" [(ngModel)]="addStation.open_time"></ion-datetime>
+        </ion-item>
+      </div>
+
+      <my-radio *ngIf="addStation.whether_open==true && addStation.whether_finished==true && addStation.whether_admission==true && addStation.whether_address==true"
+        buttonColor='#32db64' required=true title='单验证是否通过' option1='是' option2='否' [(radio)]='addStation.whether_verification'>
+      </my-radio>
+
+      <div *ngIf="addStation.whether_verification==true && addStation.whether_open==true && addStation.whether_finished==true && addStation.whether_admission==true && addStation.whether_address==true">
+        <ion-item>
+          <ion-label>
+            <i>*</i>单验日期</ion-label>
+          <ion-datetime displayFormat="YYYY-MM-DD" min="2000" max="2030-10-31" cancelText="取消" doneText="确定" [(ngModel)]="addStation.verification_time"></ion-datetime>
+        </ion-item>
+      </div>
+
+      <my-radio *ngIf="addStation.whether_verification==true && addStation.whether_open==true && addStation.whether_finished==true && addStation.whether_admission==true && addStation.whether_address==true"
+        buttonColor='#32db64' required=true title='是否初验' option1='是' option2='否' [(radio)]='addStation.whether_start_verification'>
+      </my-radio>
+
+      <div *ngIf="addStation.whether_start_verification==true && addStation.whether_verification==true && addStation.whether_open==true && addStation.whether_finished==true && addStation.whether_admission==true && addStation.whether_address==true">
+        <ion-item>
+          <ion-label>
+            <i>*</i>初验日期</ion-label>
+          <ion-datetime displayFormat="YYYY-MM-DD" min="2000" max="2030-10-31" cancelText="取消" doneText="确定" [(ngModel)]="addStation.start_verification_time"></ion-datetime>
+        </ion-item>
+      </div>
+
+      <my-radio *ngIf="addStation.whether_start_verification==true && addStation.whether_verification==true && addStation.whether_open==true && addStation.whether_finished==true && addStation.whether_admission==true && addStation.whether_address==true"
+        buttonColor='#32db64' required=true title='是否终验' option1='是' option2='否' [(radio)]='addStation.whether_end_verification'>
+      </my-radio>
+
+      <div *ngIf="addStation.whether_end_verification==true && addStation.whether_start_verification==true && addStation.whether_verification==true && addStation.whether_open==true && addStation.whether_finished==true && addStation.whether_admission==true && addStation.whether_address==true">
+        <ion-item>
+          <ion-label>
+            <i>*</i>初终验日期</ion-label>
+          <ion-datetime displayFormat="YYYY-MM-DD" min="2000" max="2030-10-31" cancelText="取消" doneText="确定" [(ngModel)]="addStation.end_verification_time"></ion-datetime>
+        </ion-item>
+      </div>
+
+    </ion-list>
+  </ion-list>
+
+  <ion-list *ngIf="type=='站点表'" class="fillInlist">
+    <ion-item class="sm-headline">
+      <ion-icon name="my-project" md="md-my-project" color="primary" class="sm-icon"></ion-icon>联系人信息
+      <ion-icon name="ios-arrow-down" item-right *ngIf="!isShow3" (click)="isShow3=!isShow3" class="arrow"></ion-icon>
+      <ion-icon name="ios-arrow-forward" item-right *ngIf="isShow3" (click)="isShow3=!isShow3" class="arrow"></ion-icon>
+    </ion-item>
+
+    <ion-list *ngIf="!isShow3">
+      <ion-item>
+        <ion-label>
+          <i>*</i>联系人姓名</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addStation.contact_name"></ion-input>
+      </ion-item>
+
+      <my-radio buttonColor='#32db64' required=true title='联系人性别' option1='女' option2='男' [(radio)]='addStation.contact_sex'>
+      </my-radio>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>联系人电话</ion-label>
+        <ion-input type="number" item-right [(ngModel)]="addStation.contact_phone"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          联系人微信</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addStation.contact_WeChat"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          联系人邮箱</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addStation.contact_email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          联系人脾气</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addStation.contact_temper"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          联系人兴趣</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addStation.contact_hobby"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          共同认识的人</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addStation.know_people"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          备注</ion-label>
+        <ion-input type="text" item-right [(ngModel)]="addStation.remark"></ion-input>
+      </ion-item>
+
+    </ion-list>
+  </ion-list>
+
+</ion-content>

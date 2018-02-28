@@ -1,0 +1,101 @@
+page-market-demand {
+    $modal-size: 20vw;
+    #market-demand {
+        background-color:rgb(244, 244, 244);
+        ion-list {
+            padding-top:10px;
+        }
+        .segment-ios .segment-button {
+          border: 0;
+          color: #333;
+          font-size: 15px;
+          height: 40px;
+          &.segment-activated {
+            color: #32a7e3;
+            background: #fff;
+            border-bottom: 3px solid #32a7e3;
+          }
+        }
+      
+        ion-item-group {
+          .item-block {
+            padding-left:10px;
+            height: 50px;
+            border-bottom: 1px solid #f4f4f4;
+            &:last-child {
+              border: 0;
+            }
+          }
+        }
+        ion-item {
+          background-color:white;
+          h2,span{
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          }
+        }
+        .i_item {
+            h2{
+                font-size:14px;
+            }
+            .tel {
+                font-size:11px;
+                color:rgb(53,53,53);
+            }
+        }
+        .modal {
+          top: 50%;
+          left: 50%;
+          z-index: 100;
+          position: fixed;
+          pointer-events: none;
+          width: $modal-size;
+          height: $modal-size;
+          line-height: $modal-size;
+          margin-left: -($modal-size * 0.5);
+          margin-top: -($modal-size * 0.5);
+          color: #fff;
+          font-size: 3em;
+          text-align: center;
+          border-radius: 8px;
+          background-color: rgba(0, 0, 0, 0.52);
+          box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.16);
+          transition: opacity .5s;
+          opacity: 0;
+          &.show {
+            opacity: 1
+          }
+        }
+        .fab {
+          // font-size: 14px;
+          color: #fff;
+          background: linear-gradient(to right bottom, #54d0f9, #36ace6);
+          box-shadow: 0 0 20px rgba(#36ace6, 0.5);
+        }
+        #fab_parent {
+            .fab-in-list {
+                width:56px;
+                height: 56px;
+                position: absolute;
+                top:0;
+                left:0;
+                transform-origin: 50% 50%;
+                &.one{
+                    transform: translateX(-40%)translateY(10%);
+                }
+                &.two{
+                    transform:translateX(-10%) translateY(-100%)
+                }
+                &.three {
+                  transform:translateY(-140%)translateX(100%)
+                }
+                .button-inner {
+                  line-height: 16px;
+                  font-size: 12px;
+                }
+            }
+        }
+    }
+  
+}

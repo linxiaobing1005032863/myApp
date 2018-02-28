@@ -1,0 +1,218 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>业主客户详情</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list class="fillInlist filterOwner">
+    <ion-item class="sm-headline">
+      <ion-icon name="my-project" md="md-my-project" color="primary" class="sm-icon"></ion-icon>客户信息
+      <ion-icon name="ios-arrow-down" item-right *ngIf="!isShow" (click)="isShow=!isShow" class="arrow"></ion-icon>
+      <ion-icon name="ios-arrow-forward" item-right *ngIf="isShow" (click)="isShow=!isShow" class="arrow"></ion-icon>
+    </ion-item>
+    <ion-list *ngIf="!isShow">
+      <ion-item>
+        <ion-label>
+          <i>*</i>客户姓名</ion-label>
+        <span item-right>{{detailsList.customer_name}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>客户性别</ion-label>
+        <span item-right>{{detailsList.customer_sex}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>客户年龄</ion-label>
+        <span item-right>{{detailsList.customer_age}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>客户状态</ion-label>
+        <span item-right>{{detailsList.customer_status}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>客户职位</ion-label>
+        <span item-right>{{detailsList?.customer_position}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>客户电话</ion-label>
+        <span item-right>{{detailsList.customer_phone}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>重要级别</ion-label>
+        <span item-right>{{detailsList.important_level}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>地区</ion-label>
+        <span item-right>{{detailsList.region}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>地址</ion-label>
+        <span item-right>{{detailsList.address}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>数据来源</ion-label>
+        <span item-right>{{detailsList.data_source}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>对应的站点地址</ion-label>
+        <span item-right>{{detailsList?.site_address}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>对应的站点经度</ion-label>
+        <span item-right>{{detailsList?.longitude}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>对应的站点纬度</ion-label>
+        <span item-right>{{detailsList?.latitude}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <i>*</i>对应的现网状态</ion-label>
+        <span item-right>{{detailsList?.current_network_state}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>对应的站点状态</ion-label>
+        <span item-right>{{detailsList?.site_state}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>对应的归属运营商</ion-label>
+        <span item-right>{{detailsList?.operator}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>对应的站点类型</ion-label>
+        <span item-right>{{detailsList?.site_type}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>客户微信</ion-label>
+        <span item-right>{{detailsList?.customer_WeChat}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>客户脾气</ion-label>
+        <span item-right>{{detailsList?.customer_temper}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>客户兴趣</ion-label>
+        <span item-right>{{detailsList?.customer_interest}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>共同认识的人</ion-label>
+        <span item-right>{{detailsList?.know_people}}</span>
+      </ion-item>
+
+      <ion-item >
+        <ion-label>业主提供的身份证明</ion-label>
+        <span item-right>{{detailsList?.identity_prove}}</span>
+      </ion-item>
+
+      <div *ngIf="detailsList?.identity_prove=='有'">
+        <ion-item class="ownerCompactImg">
+          <i>*</i>上传证明
+          <p style="font-size:12px;">(房产证、单位授权证明、土地使用证、营业执照信息)</p>
+          <div class="accessory">
+            <div *ngFor="let item of showImg" class="image">
+              <img class="img" src="{{prefix + item.url}}" (click)="showBig(prefix + item.url)" *ngIf="item.isImg">
+              <a class="bg-color model-blue" *ngIf="!item.isImg" href='{{prefix + item.url}}'>
+                <ion-icon name="my-file" md="md-my-file" color="light" clear></ion-icon>
+              </a>
+            </div>
+          </div>
+        </ion-item>
+      </div>
+
+    </ion-list>
+  </ion-list>
+
+  <ion-list class="fillInlist filterOwner">
+
+    <ion-item class="sm-headline">
+      <ion-icon name="my-project" md="md-my-project" color="primary" class="sm-icon"></ion-icon>设备环境搭建信息
+      <ion-icon name="ios-arrow-down" item-right *ngIf="!isShow1" (click)="isShow1=!isShow1" class="arrow"></ion-icon>
+      <ion-icon name="ios-arrow-forward" item-right *ngIf="isShow1" (click)="isShow1=!isShow1" class="arrow"></ion-icon>
+    </ion-item>
+
+    <ion-list *ngIf="!isShow1">
+
+      <ion-item>
+        <ion-label>建筑类型</ion-label>
+        <span item-right>{{detailsList?.architecture_type}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>空间大小</ion-label>
+        <span item-right>{{detailsList?.space_size}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>供电情况</ion-label>
+        <span item-right>{{detailsList?.power_supply_situation}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>供电价格</ion-label>
+        <span item-right>{{detailsList?.power_supply_price}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>空调排水</ion-label>
+        <span item-right>{{detailsList?.air_conditioning_drainage}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>接地</ion-label>
+        <span item-right>{{detailsList?.ground}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>传输路由</ion-label>
+        <span item-right>{{detailsList?.transmission_routing}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>承重</ion-label>
+        <span item-right>{{detailsList?.bearing}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>手机网络信号情况</ion-label>
+        <span item-right>{{detailsList?.phone_network_signal}}</span>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>周围辐射情况</ion-label>
+        <span item-right>{{detailsList?.radiation_condition}}</span>
+      </ion-item>
+
+    </ion-list>
+  </ion-list>
+</ion-content>

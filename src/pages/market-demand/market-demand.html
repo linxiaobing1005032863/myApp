@@ -1,0 +1,108 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>需求市场</ion-title>
+    <ion-buttons end >
+      <button ion-button icon-only color="royal" (click)="gotofiltrate()">
+        筛选
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  <div>
+    <ion-segment [(ngModel)]="demand" (ionChange)="sysChanged(demand)">
+      <ion-segment-button value="company" (click)="sendHttp(company)">
+        企业需求
+      </ion-segment-button>
+      <ion-segment-button value="people" (click)="sendHttp(people)">
+        业主需求
+      </ion-segment-button>
+      <ion-segment-button value="station" (click)="sendHttp(station)">
+        站点需求
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+</ion-header>
+
+
+<ion-content id="market-demand">
+  <!-- 上拉刷新 -->
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+      
+      
+  <div [ngSwitch]="demand">
+    <!-- 需求市场   企业需求 -->
+    <ion-list *ngSwitchCase="'company'" #abc>
+        <ion-item no-lines *ngFor="let item of companyList" (click)="companyDetail(item)">
+          <ion-thumbnail item-start>
+            <img src="../../assets/imgs/lgLogo.png">
+          </ion-thumbnail>
+          <div class="i_item">
+            <h2>{{item.company}}</h2>
+            <p class="tel">联系方式：{{item.phone}}</p>
+            <p class="tel">地区:{{item.provinces}},{{item.city}},{{item.area}}</p>
+          </div>
+        </ion-item>
+        <!-- <ion-item no-lines >
+            <ion-thumbnail item-start>
+              <img src="../../assets/imgs/lgLogo.png">
+            </ion-thumbnail>
+            <div class="i_item">
+              <h2>ghfggffgffdgggggggggggggggggggggggggggggggggggg</h2>
+              <p class="tel">联系方式：ffddfdfdf</p>
+              <p class="tel">地区:fdfdfd,fdfdfd,fddfdfd</p>
+            </div>
+          </ion-item> -->
+    </ion-list>
+    <!-- 需求市场   企业需求 -->
+
+    <!-- 需求市场  业主需求 -->
+    <ion-list *ngSwitchCase="'people'" #abc>
+      <ion-item no-lines *ngFor="let item of peopleList" (click)="peopleDetail(item)">
+          <ion-thumbnail item-start>
+              <img src="../../assets/imgs/lgLogo.png">
+            </ion-thumbnail>
+            <div class="i_item">
+                <h2>{{item.ownerName}}</h2>
+                <p class="tel">联系方式：{{item.phone}}</p>
+                <p class="tel">地区:{{item.provinces}},{{item.city}},{{item.area}}</p>
+              </div>
+        </ion-item>
+    </ion-list>
+    <!-- 需求市场  业主需求 -->
+
+    <!-- 需求市场  站点需求 -->
+    <ion-list *ngSwitchCase="'station'" #abc>
+      <ion-item no-lines *ngFor="let item of stationList" (click)="stationDetail(item)">
+          <ion-thumbnail item-start>
+              <img src="../../assets/imgs/lgLogo.png">
+            </ion-thumbnail>
+            <div class="i_item">
+                <h2>{{item.siteName}}</h2>
+                <p class="tel">联系方式：{{item.phone}}</p>
+                <p class="tel">地区:{{item.provinces}},{{item.city}},{{item.area}}</p>
+              </div>
+      </ion-item>
+    </ion-list>
+    <!-- 需求市场  站点需求 -->
+
+  </div>
+
+  <div class="modal" [class.show]="showModal">
+    {{index}}
+  </div>
+
+  <ion-fab right bottom id="fab_parent">
+    <button ion-fab color="light"><ion-icon name="add"></ion-icon></button>
+    <ion-fab-list side="left">
+      <button ion-fab class="one" (click)="compangAdd()">发布<br>企业需求</button>
+      <button ion-fab class="two" (click)="peopleAdd()">发布<br>业主需求</button>
+      <button ion-fab class="three" (click)="stationAdd()">发布<br>站点需求</button>
+    </ion-fab-list>
+  </ion-fab>
+ <!-- 下拉加载 -->
+ <ion-infinite-scroll (ionInfinite)="doInfinite($event)" threshold="200px" *ngIf='hideBtn'>
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="加载中...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

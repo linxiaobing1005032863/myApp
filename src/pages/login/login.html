@@ -1,0 +1,27 @@
+<ion-content id="content">
+  <ion-list id="login-bg">
+    <ion-item class="title" no-lines>
+      <a class="logo-img">
+        <img src="assets/imgs/lgLogo.png" alt="">
+      </a>
+    </ion-item>
+    <ion-item class="ipt">
+      <ion-icon ios="ios-person" md="md-person" item-start color="loginBtn"></ion-icon>
+      <ion-input placeholder="请输入您的手机号/工号" [(ngModel)]="userPhone"></ion-input>
+    </ion-item>
+    <ion-item class="ipt">
+      <ion-icon ios="ios-unlock" md="md-unlock" item-start color="loginBtn"></ion-icon>
+      <ion-input placeholder="请填写您的密码" type="password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+    <ion-item class="login ipt noLine" no-lines>
+      <button ion-button block (click)="login(userPhone,password)" color="loginBtn">
+        登录
+      </button>
+    </ion-item>
+    <ion-item class="twoSel">
+      <span item-start (click)="register()">快速注册</span>
+      <span item-end class="remPwd">
+        <ion-toggle value="foo" checked="false" [(ngModel)]="remeberPwd"></ion-toggle>记住密码</span>
+    </ion-item>
+  </ion-list>
+</ion-content>

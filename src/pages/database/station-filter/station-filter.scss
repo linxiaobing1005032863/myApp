@@ -1,0 +1,9 @@
+page-station-filter {
+  #filterST,
+  #filterSB {
+    @include filter;
+  }
+  #filterSB {
+    @include threeRadio;
+  }
+}

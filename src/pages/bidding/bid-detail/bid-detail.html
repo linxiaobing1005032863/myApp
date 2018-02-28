@@ -1,0 +1,44 @@
+
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>招投标信息详情</ion-title>
+    <!-- <ion-buttons end>
+      <button ion-button icon-only class="submit" (click)="submit()">
+        确定
+      </button>
+    </ion-buttons> -->
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content id="bid-detail">
+  <!-- {{detailList.content}} -->
+  <!-- <ion-list class="edit_pd">
+    <ion-item (click)="showAreasSelect()">
+      <ion-label color="thinGrey">选择地区</ion-label>
+      <ion-input [(ngModel)]="city" readonly></ion-input>
+    </ion-item>
+    <ion-item >
+      <ion-label color="thinGrey">开始时间</ion-label>
+      <<ion-datetime displayFormat="YYYY-MM-DD" cancelText="取消" doneText="确认" max="2020-10-31" bindon-ngModel="startTime"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label color="thinGrey">结束时间</ion-label>
+      <<ion-datetime displayFormat="YYYY-MM-DD" cancelText="取消" doneText="确认" max="2020-10-31" bindon-ngModel="endTime"></ion-datetime>
+    </ion-item>
+        
+    <ion-item>
+        <ion-label color="thinGrey">类型</ion-label>
+        <ion-select [(ngModel)]="bidFilter.bidType" cancelText="取消" okText="确定">
+            <ion-option value="招标">招标</ion-option>
+            <ion-option value="中标">中标</ion-option>
+          </ion-select>
+      </ion-item>  
+    <!-- <ion-item>
+      <ion-label>是否按热点度排序</ion-label>
+      <ion-toggle checked="false"></ion-toggle>
+    </ion-item> -->
+  <!-- </ion-list> --> 
+</ion-content>
+<!-- <areas-select #areasSelect [level]="1" (cancel)="closeSelect()" (done)="done($event)"></areas-select> -->

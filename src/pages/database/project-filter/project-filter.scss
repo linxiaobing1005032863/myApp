@@ -1,0 +1,9 @@
+page-project-filter {
+  #filterPT,
+  #filterPB {
+    @include filter;
+  }
+  #filterPB {
+    @include threeRadio;
+  }
+}

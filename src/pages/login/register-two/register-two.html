@@ -1,0 +1,28 @@
+
+<ion-header>
+  <ion-navbar text-center color="headerBg">
+    <ion-title>注册</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content id="nextTwo">
+  <ion-list>
+    <div>
+      <ion-item>
+        <ion-label stacked>姓名</ion-label>
+        <ion-input type="text" placeholder='请输入您的真实姓名' [(ngModel)]="name"></ion-input>
+      </ion-item>
+    </div>
+    <ion-item>
+      <ion-label stacked>邀请码<span style="font-size:12px">(非必填)</span></ion-label>
+      <ion-input type="text" placeholder="请输入邀请码" [(ngModel)]="rqcode"></ion-input>
+    </ion-item>
+    <p class="tip" *ngIf="showmsg"><i> *</i> {{msg}}</p>
+    <ion-item class="btn">
+      <button ion-button full large color="{{name?'loginBtn':'thinGrey'}}" (click)="comfirm(name,rqcode)">
+        确认
+      </button>
+    </ion-item>
+  </ion-list>
+</ion-content>

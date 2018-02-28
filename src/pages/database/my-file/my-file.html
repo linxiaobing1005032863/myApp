@@ -1,0 +1,73 @@
+<ion-header id="myFileT">
+
+  <ion-navbar color="primary">
+    <ion-title>传输列表</ion-title>
+  </ion-navbar>
+  <div>
+    <ion-segment [(ngModel)]="document">
+      <ion-segment-button value="download">
+        <span>下载列表</span>
+      </ion-segment-button>
+      <ion-segment-button value="upload">
+        <span>上传列表</span>
+      </ion-segment-button>
+
+    </ion-segment>
+  </div>
+</ion-header>
+
+
+
+<ion-content id="myFileTB">
+  <div [ngSwitch]="document">
+    <!-- 我的文档   下载列表 -->
+    <ion-list *ngSwitchCase="'download'">
+      <p class="sm-title" *ngIf="downloading.length!=0">正在下载({{downloading.length}})</p>
+      <ion-item *ngFor="let item of downloading">
+        <ion-thumbnail item-start>
+          <img src="assets/imgs/fileImg.png">
+        </ion-thumbnail>
+        <h2>{{item.name}}</h2>
+        <p>{{item.time}}</p>
+        <button ion-button clear item-end>{{item.size}}</button>
+      </ion-item>
+
+      <p class="sm-title" *ngIf="showDownload">下载完成</p>
+      <ion-item *ngFor="let item of showDownload">
+        <ion-thumbnail item-start>
+          <img src="assets/imgs/fileImg.png">
+        </ion-thumbnail>
+        <h2>{{item.name}}</h2>
+
+        <p>{{item.time}}&nbsp;{{item.size}}</p>
+        <button ion-button clear item-end (click)="openFile(item.openUrl)">打开</button>
+      </ion-item>
+    </ion-list>
+    <!-- 我的文档   下载列表 -->
+
+    <!-- 我的文档  上传列表 -->
+    <ion-list *ngSwitchCase="'upload'">
+      <p class="sm-title" *ngIf="uploading.length!=0">正在上传({{uploading.length}})</p>
+      <ion-item *ngFor="let item of uploading">
+        <ion-thumbnail item-start>
+          <img src="assets/imgs/fileImg.png">
+        </ion-thumbnail>
+        <h2>{{item.name}}</h2>
+        <p>{{item.time}}</p>
+        <button ion-button clear item-end id="progressNumber"></button>
+      </ion-item>
+
+      <p class="sm-title" *ngIf="showUpload">上传完成</p>
+      <ion-item *ngFor="let item of showUpload">
+        <ion-thumbnail item-start>
+          <img src="assets/imgs/fileImg.png">
+        </ion-thumbnail>
+        <h2>{{item.name}}</h2>
+        <p>{{item.time}}</p>
+
+        <button ion-button clear item-end (click)="openFile(item.openUrl,'up')">打开</button>
+      </ion-item>
+    </ion-list>
+    <!-- 我的文档  上传列表 -->
+  </div>
+</ion-content>

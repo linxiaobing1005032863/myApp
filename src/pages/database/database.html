@@ -1,0 +1,222 @@
+<ion-header id="dataTop">
+  <ion-navbar color="primary">
+    <ion-title>资料库</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="royal" (click)="addProject()">
+        <ion-icon ios="ios-add" md="md-add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+  <ion-toolbar class="search">
+    <ion-searchbar placeholder="搜索" (ionInput)="getItems($event)" autocomplete="on" showCancelButton='true' cancelButtonText="取消"
+      (ionCancel)="onCancelSearch($event)" (click)="hideShow()"></ion-searchbar>
+  </ion-toolbar>
+  <ion-segment [(ngModel)]="database" (ionChange)="sysChanged()" *ngIf="isShow">
+    <ion-segment-button value="project">
+      项目
+    </ion-segment-button>
+    <ion-segment-button value="owner">
+      业主客户
+    </ion-segment-button>
+    <ion-segment-button value="company">
+      企业客户
+    </ion-segment-button>
+    <ion-segment-button value="station">
+      站点
+    </ion-segment-button>
+    <ion-segment-button value="files">
+      我的文档
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+
+<ion-content (ionScroll)="onScroll()" [ngClass]="{'showContent': !isShow}" id="dataBottom">
+
+  <ion-list *ngIf="!isShow && searchContent.length!==0" class="searchList">
+
+    <ion-item-sliding class="part">
+      <ion-item>
+        <h2 class="title">项目</h2>
+      </ion-item>
+      <ion-item *ngFor="let i of searchProject">
+        <h2 (click)="searchResult(i.id,i.token,i.type)">{{i.name}}</h2>
+      </ion-item>
+    </ion-item-sliding>
+    <ion-item-sliding class="part">
+      <ion-item>
+        <h2 class="title">业主客户</h2>
+      </ion-item>
+      <ion-item *ngFor="let i of searchCustomer">
+        <h2 (click)="searchResult(i.id,i.token,i.type)">{{i.name}}</h2>
+      </ion-item>
+    </ion-item-sliding>
+    <ion-item-sliding class="part">
+      <ion-item>
+        <h2 class="title">企业客户</h2>
+      </ion-item>
+      <ion-item *ngFor="let i of searchCompany">
+        <h2 (click)="searchResult(i.id,i.token,i.type)">{{i.name}}</h2>
+      </ion-item>
+    </ion-item-sliding>
+    <ion-item-sliding class="part">
+      <ion-item>
+        <h2 class="title">站点</h2>
+      </ion-item>
+      <ion-item *ngFor="let i of searchSite">
+        <h2 (click)="searchResult(i.id,i.token,i.type)">{{i.name}}</h2>
+      </ion-item>
+    </ion-item-sliding>
+
+  </ion-list>
+
+
+  <div [ngSwitch]="database" *ngIf="isShow">
+    <!-- 资料库      项目 -->
+    <ion-list *ngSwitchCase="'project'">
+      <ion-item-group *ngFor="let item of projectContacts" #IonItemGroup1>
+
+        <ion-item-divider color="bgColor" sticky *ngIf="filterProject==false">
+          <ion-label>{{item.letter}}</ion-label>
+        </ion-item-divider>
+
+        <ion-item-sliding #slidingItem *ngIf="filterProject==false">
+          <ion-item *ngFor="let i of item.data" (click)="gotoProject(i.id,i.token)">
+            <h2>{{i.project_name}}</h2>
+          </ion-item>
+        </ion-item-sliding>
+
+        <ion-item-sliding #slidingItem *ngIf="filterProject==true">
+          <ion-item (click)="gotoProject(item.id,item.token)">
+            <h2>{{item.project_name}}</h2>
+          </ion-item>
+        </ion-item-sliding>
+
+      </ion-item-group>
+    </ion-list>
+    <!-- 资料库      项目 -->
+
+    <!-- 资料库  业主客户 -->
+    <ion-list *ngSwitchCase="'owner'">
+      <ion-item-group *ngFor="let item of ownerContacts" #IonItemGroup1>
+
+        <ion-item-divider color="bgColor" sticky *ngIf="filterOwner==false">
+          <ion-label>{{item.letter}}</ion-label>
+        </ion-item-divider>
+
+        <ion-item-sliding #slidingItem *ngIf="filterOwner==false">
+          <ion-item *ngFor="let i of item.data" (click)="gotoOwner(i.id,i.token)">
+            <h2>{{i.customer_name}}</h2>
+          </ion-item>
+        </ion-item-sliding>
+
+        <ion-item-sliding #slidingItem *ngIf="filterOwner==true">
+          <ion-item (click)="gotoOwner(item.id,item.token)">
+            <h2>{{item.customer_name}}</h2>
+          </ion-item>
+        </ion-item-sliding>
+
+      </ion-item-group>
+    </ion-list>
+    <!-- 资料库  业主客户 -->
+
+    <!-- 资料库    企业客户 -->
+    <ion-list *ngSwitchCase="'company'">
+      <ion-item-group *ngFor="let item of companyContacts" #IonItemGroup1>
+
+        <ion-item-divider color="bgColor" sticky *ngIf="filterCompany==false">
+          <ion-label>{{item.letter}}</ion-label>
+        </ion-item-divider>
+
+        <ion-item-sliding #slidingItem *ngIf="filterCompany==false">
+          <ion-item *ngFor="let i of item.data" (click)="gotoCompany(i.id,i.token)">
+            <h2>{{i.company_name}}</h2>
+          </ion-item>
+        </ion-item-sliding>
+
+        <ion-item-sliding #slidingItem *ngIf="filterCompany==true">
+          <ion-item (click)="gotoCompany(item.id,item.token)">
+            <h2>{{item.company_name}}</h2>
+          </ion-item>
+        </ion-item-sliding>
+
+      </ion-item-group>
+    </ion-list>
+    <!-- 资料库    企业客户 -->
+
+    <!-- 资料库      站点 -->
+    <ion-list *ngSwitchCase="'station'">
+      <ion-item-group *ngFor="let item of stationContacts" #IonItemGroup1>
+
+        <ion-item-divider color="bgColor" sticky *ngIf="filterSite==false">
+          <ion-label>{{item.letter}}</ion-label>
+        </ion-item-divider>
+
+        <ion-item-sliding #slidingItem *ngIf="filterSite==false">
+          <ion-item *ngFor="let i of item.data" (click)="gotoStation(i.id,i.token)">
+            <h2>{{i.site_name}}</h2>
+          </ion-item>
+        </ion-item-sliding>
+
+        <ion-item-sliding #slidingItem *ngIf="filterSite==true">
+          <ion-item (click)="gotoStation(item.id,item.token)">
+            <h2>{{item.site_name}}</h2>
+          </ion-item>
+        </ion-item-sliding>
+
+      </ion-item-group>
+    </ion-list>
+    <!-- 资料库      站点 -->
+
+    <!-- 资料库     我的文档 -->
+    <ion-list *ngSwitchCase="'files'" class="myfile">
+      <ion-item-group *ngFor="let item of filesContacts" #IonItemGroup1>
+
+        <ion-item-divider color="bgColor" sticky>
+          <ion-label>{{item.letter}}</ion-label>
+        </ion-item-divider>
+
+        <ion-item-sliding (ionSwipe)="delete(i.id,i.token)" *ngFor="let i of item.data">
+          <ion-item (click)="downLoad(i.id,i.token,i.fileName,i.size)">
+            <ion-thumbnail item-start>
+              <img src="assets/imgs/fileImg.png">
+            </ion-thumbnail>
+            <h2>{{i.fileName}}</h2>
+            <p>{{i.size}}</p>
+          </ion-item>
+          <ion-item-options (click)="delete(i.id,i.token)">
+            <button ion-button expandable color="danger">删除</button>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-item-group>
+    </ion-list>
+    <!-- 资料库     我的文档 -->
+  </div>
+
+  <div id="letter" #IndexedMenu *ngIf="isShow && filterProject==false && filterOwner ==false && filterCompany ==false && filterSite ==false">
+    <p class="indexed-item" [class.activate]="letter === index" *ngFor="let letter of newArr; let i = index" (click)="selectIndex(i)">{{letter}}</p>
+  </div>
+  <div class="modal" [class.show]="showModal" *ngIf="isShow">
+    {{index}}
+  </div>
+
+  <ion-fab right bottom (click)="gotoFilter(database)" *ngIf="database!=='files' && isShow">
+    <button ion-fab color="light">筛选</button>
+  </ion-fab>
+
+
+  <ion-fab right bottom *ngIf="database=='files' && isShow">
+    <button ion-fab color="light">
+      <ion-icon ios="ios-add" md="md-add"></ion-icon>
+    </button>
+    <ion-fab-list side="top">
+      <button ion-fab class="inlist1" (click)="gotoUp('upload')">
+        上传
+        <br>附件
+      </button>
+      <button ion-fab class="inlist2" (click)="gotoFiles('see')">传输
+        <br>列表</button>
+    </ion-fab-list>
+  </ion-fab>
+
+</ion-content>

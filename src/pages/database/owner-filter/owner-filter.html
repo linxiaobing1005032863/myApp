@@ -1,0 +1,66 @@
+<ion-header id="filterOT">
+
+  <ion-navbar color="primary">
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">返回</button>
+    </ion-buttons>
+    <ion-title>业主筛选条件</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only class="submit" (click)="submit()">
+        提交
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content id="filterOB">
+  <ion-list>
+    <ion-item>
+      <ion-label>客户名称</ion-label>
+      <ion-input type="text" item-right [(ngModel)]="paramObj.customer_name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>客户状态</ion-label>
+      <ion-input type="text" item-right [(ngModel)]="paramObj.customer_status"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>重要级别</ion-label>
+      <ion-input type="text" item-right [(ngModel)]="paramObj.important_level"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>地区</ion-label>
+      <ion-multi-picker item-content [multiPickerColumns]="cityColumns" [cancelText]="'取消'" [doneText]="'完成'" (ionChange)="getAddress()"
+        [(ngModel)]="paramObj.region"></ion-multi-picker>
+    </ion-item>
+    <ion-row>
+      <ion-col col-5>
+        <ion-label> 与业主签订合同</ion-label>
+      </ion-col>
+      <ion-col col-7>
+        <ion-list radio-group class="choose" [(ngModel)]="paramObj.identity_prove">
+          <ion-item>
+            <ion-label>无</ion-label>
+            <ion-radio value="0"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>有</ion-label>
+            <ion-radio value="1"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>全部</ion-label>
+            <ion-radio value="2"></ion-radio>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="danger" (click)="reset()">
+    <ion-title>重新筛选条件</ion-title>
+  </ion-toolbar>
+</ion-footer>

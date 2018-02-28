@@ -1,0 +1,45 @@
+<ion-header>
+    <ion-navbar color="primary">
+      <ion-title>日历待办</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-fab top right edge style="position: absolute;top: -50px;right: 10px">
+    <button ion-fab mini><ion-icon ios="ios-menu" md="md-menu"></ion-icon></button>
+    <ion-fab-list>
+      <button class="addbtn" (click)="getDetailAdd()">添加任务</button>
+      <button class="addbtn" (click)="detailSee()">任务详情</button>
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>
+<ion-content class="has-header">
+  <ion-toolbar>
+    <ion-title> {{viewTitle}}</ion-title>
+  </ion-toolbar>
+    <calendar [eventSource]="eventSource"
+              [dateFormatter]="calendar.dateFormatter"
+              [calendarMode]="calendar.mode"
+              [currentDate]="calendar.currentDate"
+              (onCurrentDateChanged)="onCurrentDateChanged($event)"
+              (onEventSelected)="onEventSelected($event)"
+              (onTitleChanged)="onViewTitleChanged($event)"
+              (onTimeSelected)="onTimeSelected($event)"
+              step="30"
+              allDayLabel="整天">
+    </calendar>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons start>
+        <button ion-button (click)="changeMode('day')">天</button>
+    </ion-buttons>
+    <ion-title>
+      <ion-buttons>
+      <button ion-button (click)="changeMode('week')">周</button>
+    </ion-buttons>
+    </ion-title>
+    <ion-buttons end>
+        <button ion-button (click)="changeMode('month')">月</button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

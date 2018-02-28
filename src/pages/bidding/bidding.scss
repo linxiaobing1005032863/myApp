@@ -1,0 +1,52 @@
+page-bidding {
+  
+  .bid-content {
+    background-color:#F4F4F4;
+    overflow: scroll;
+    // ion-list {
+    //     padding-top:10px;
+    // }
+    ion-label{
+      white-space: normal;
+    }
+    ion-list{
+      background: #F4F4F4;
+      height: 100%;
+      // padding: 0;
+      .bid-list{
+            background: #fff;
+            width: 100%;
+            height: 100px;
+            margin-top: 0;
+            margin-bottom: 15px;
+            .i_item { 
+              height: 71px;
+              h2{
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                // text-overflow: ellipsis;
+                // word-break: break-all;
+                line-height: 23px;
+                -webkit-line-clamp:2;                
+              }       
+              .tel {
+                  font-size:13px;
+                  color:rgb(153,153,153);
+                  padding: 3px 0;
+              }
+              .tel2 {
+                font-size:13px;
+                color:rgb(153,153,153);
+                border: 1px solid rgb(153,153,153);
+                border-radius: 10px;
+                margin-left: 10px;
+                padding: 3px 10px;
+            }
+            }
+          }
+    }
+}
+  
+  
+}

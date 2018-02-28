@@ -1,0 +1,95 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>招投标信息</ion-title>
+    <ion-buttons end >
+      <button ion-button icon-only color="royal" (click)="gotofiltrate()">
+        筛选
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="bid-content">
+  <!-- 上拉刷新 -->
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+      
+      
+  <div [ngSwitch]="bidFilter.class" >
+    <!-- 需求市场   企业需求 -->
+    <!-- <ion-list *ngSwitchCase="'company'" #abc> -->
+        <!-- <ion-item no-lines *ngFor="let item of companyList">
+          <ion-thumbnail item-start>
+            <img src="../../assets/imgs/lgLogo.png">
+          </ion-thumbnail>
+          <div class="i_item">
+            <h2>{{item.company}}</h2>
+            <span class="tel">联系方式：<i>{{item.phone}}</i></span>
+          </div>
+        </ion-item> -->
+        <ion-list *ngSwitchCase="1">
+            <ion-item no-lines class="bid-list" *ngFor="let item of bidList" (click)="bidDetail(item)">
+                <ion-thumbnail item-end style="width: 6.6rem;height: 5.6rem;margin:0" class="biddingImage">
+                  <img src={{BIDDING+item.url}} style="width:6.6rem;height:5.6rem;">
+                </ion-thumbnail>
+                <div class="i_item">
+                  <h2 class="biddingTitle">{{item.title}}</h2>
+                  <div><span class="tel">{{item.time}}</span><span class="tel2">原创</span></div>
+                  
+                </div>
+              </ion-item>
+        </ion-list>   
+        <ion-list *ngSwitchCase="2">
+          <ion-item no-lines class="bid-list" *ngFor="let item of openList" (click)="bidDetail(item)">
+              <ion-thumbnail item-end>
+                <img src={{BIDDING+item.url}} style="width:9rem;height:6.4rem">
+              </ion-thumbnail>
+              <div class="i_item">
+                <h2>{{item.title}}</h2>
+                <div><span class="tel">{{item.time}}</span><span class="tel2">原创</span></div>
+                
+              </div>
+            </ion-item>
+      </ion-list>     
+        
+    <!-- </ion-list> -->
+    <!-- 需求市场   企业需求 -->
+
+    <!-- 需求市场  业主需求 -->
+    <!-- <ion-list *ngSwitchCase="'people'" #abc>
+      <ion-item no-lines *ngFor="let item of peopleList">
+            <ion-thumbnail item-start>
+              <img src="../../assets/imgs/lgLogo.png">
+            </ion-thumbnail>
+            <div class="i_item">
+              <h2>{{item.ownerName}}</h2>
+              <span class="tel">联系方式：<i>{{item.phone}}</i></span>
+            </div>
+        </ion-item>
+    </ion-list> -->
+    <!-- 需求市场  业主需求 -->
+
+    
+
+  </div>
+
+  <!-- <div class="modal" [class.show]="showModal">
+    {{index}}
+  </div>
+
+  <ion-fab right bottom id="fab_parent">
+    <button ion-fab color="light"><ion-icon name="add"></ion-icon></button>
+    <ion-fab-list side="left">
+      <button ion-fab class="one" (click)="compangAdd()">发布<br>企业需求</button>
+      <button ion-fab class="two" (click)="peopleAdd()">发布<br>业主需求</button>
+      <button ion-fab class="three" (click)="stationAdd()">发布<br>站点需求</button>
+    </ion-fab-list>
+  </ion-fab> -->
+ <!-- 下拉加载 -->
+ <ion-infinite-scroll (ionInfinite)="doInfinite($event)" threshold="200px" *ngIf='hideBtn'>
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="加载中...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
