@@ -112,7 +112,7 @@ export class FiltratePage {
         break;
       case 'station':
       console.log(this.station)
-        this.http.get(DEMAND + `site/v1/city/${encodeURI(this.station.provinces)}`)
+        this.http.get(DEMAND + `/owner/v1/city/${encodeURI(this.station.provinces)}`)
         .then((res)=> {    
           console.log(res)      
           if(res.data){

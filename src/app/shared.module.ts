@@ -16,4 +16,4 @@ import { IonicModule } from 'ionic-angular';
   ]
 })
 
-export class SharedModule { }
+export class SharedModule {}

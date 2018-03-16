@@ -23,6 +23,9 @@ export class HomePage {
   gotoBidding() {
     this.navCtrl.push('biddingPage')
   }
+  gotoBid(){
+    this.navCtrl.push('BidPage');
+  }
   xx() {
     let confirm = this.alertCtrl.create({
       title: '消息提示',

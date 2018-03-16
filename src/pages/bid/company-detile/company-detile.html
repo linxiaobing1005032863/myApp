@@ -1,0 +1,257 @@
+<!--
+  Generated template for the CompanyDetilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>{{pangName}}需求详情</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list [ngSwitch]="page">
+      <ion-list  class="fillInlist"  *ngSwitchCase="'company'">
+          <ion-item class="sm-headline">
+            <ion-icon name="my-project" md="md-my-project" color="primary" class="sm-icon"></ion-icon>需求信息
+            <ion-icon name="ios-arrow-down" item-right *ngIf="!isShow1" (click)="isShow1=!isShow1" class="arrow"></ion-icon>
+            <ion-icon name="ios-arrow-forward" item-right *ngIf="isShow1" (click)="isShow1=!isShow1" class="arrow"></ion-icon>
+          </ion-item>
+          <ion-list *ngIf="!isShow1">
+              <ion-item>
+                  <ion-label>
+                    企业名称:
+                  </ion-label>
+                </ion-item>
+                <ion-item>{{companyList.company}}</ion-item>
+                <ion-item>
+                    <ion-label>
+                      公司成立时间：
+                    </ion-label>
+                  </ion-item>
+                  <ion-item>{{companyList.createCompanyTime}}</ion-item>
+          </ion-list>
+       
+          
+        </ion-list>
+        <ion-list  class="fillInlist">
+            <ion-item class="sm-headline">
+              <ion-icon name="my-project" md="md-my-project" color="primary" class="sm-icon"></ion-icon>联系人信息
+              <ion-icon name="ios-arrow-down" item-right *ngIf="!isShow2" (click)="isShow2=!isShow2" class="arrow"></ion-icon>
+              <ion-icon name="ios-arrow-forward" item-right *ngIf="isShow2" (click)="isShow2=!isShow2" class="arrow"></ion-icon>
+            </ion-item>
+            <ion-list *ngIf="!isShow2">
+                <ion-item>
+                    <ion-label>
+                      联系人姓名：
+                    </ion-label>
+            
+                  </ion-item>
+                  <ion-item>{{companyList.name}}</ion-item>
+                  <ion-item>
+                      <ion-label>
+                        联系人性别：
+                      </ion-label>
+        
+                    </ion-item>
+                    <ion-item>{{companyList.sex}}</ion-item>
+                    <ion-item>
+                        <ion-label>
+                          联系人职位：
+                        </ion-label>
+                
+                      </ion-item>
+                      <ion-item>{{companyList.position}}</ion-item>
+            </ion-list>
+        
+          </ion-list>
+          <ion-list  class="fillInlist">
+              <ion-item class="sm-headline">
+                <ion-icon name="my-project" md="md-my-project" color="primary" class="sm-icon"></ion-icon>需求信息
+                <ion-icon name="ios-arrow-down" item-right *ngIf="!isShow3" (click)="isShow3=!isShow3" class="arrow"></ion-icon>
+                <ion-icon name="ios-arrow-forward" item-right *ngIf="isShow3" (click)="isShow3=!isShow3" class="arrow"></ion-icon>
+              </ion-item>
+              <ion-list *ngIf="!isShow3">
+                  <ion-item>
+                      <ion-label>
+                        项目类型：
+                      </ion-label>
+                    </ion-item>
+                    <ion-item>{{companyList.products}}</ion-item>
+                    <ion-item>
+                        <ion-label>
+                          项目说明：
+                        </ion-label>
+                      </ion-item>
+                      <ion-item>{{companyList.companyType}}</ion-item>
+              
+              </ion-list>
+              
+            </ion-list>
+            <ion-list  class="fillInlist"  *ngSwitchCase="'people'">
+                <ion-item class="sm-headline">
+                  <ion-icon name="my-project" md="md-my-project" color="primary" class="sm-icon"></ion-icon>需求信息
+                  <ion-icon name="ios-arrow-down" item-right *ngIf="!isShow1" (click)="isShow1=!isShow1" class="arrow"></ion-icon>
+                  <ion-icon name="ios-arrow-forward" item-right *ngIf="isShow1" (click)="isShow1=!isShow1" class="arrow"></ion-icon>
+                </ion-item>
+                <ion-list *ngIf="!isShow1">
+                    <ion-item>
+                        <ion-label>
+                          企业名称:
+                        </ion-label>
+                      </ion-item>
+                      <ion-item>{{companyList.company}}</ion-item>
+                      <ion-item>
+                          <ion-label>
+                            公司成立时间：
+                          </ion-label>
+                        </ion-item>
+                        <ion-item>{{companyList.createCompanyTime}}</ion-item>
+                </ion-list>
+             
+                
+              </ion-list>
+              <ion-list  class="fillInlist">
+                  <ion-item class="sm-headline">
+                    <ion-icon name="my-project" md="md-my-project" color="primary" class="sm-icon"></ion-icon>联系人信息
+                    <ion-icon name="ios-arrow-down" item-right *ngIf="!isShow2" (click)="isShow2=!isShow2" class="arrow"></ion-icon>
+                    <ion-icon name="ios-arrow-forward" item-right *ngIf="isShow2" (click)="isShow2=!isShow2" class="arrow"></ion-icon>
+                  </ion-item>
+                  <ion-list *ngIf="!isShow2">
+                      <ion-item>
+                          <ion-label>
+                            联系人姓名：
+                          </ion-label>
+                  
+                        </ion-item>
+                        <ion-item>{{companyList.name}}</ion-item>
+                        <ion-item>
+                            <ion-label>
+                              联系人性别：
+                            </ion-label>
+              
+                          </ion-item>
+                          <ion-item>{{companyList.sex}}</ion-item>
+                          <ion-item>
+                              <ion-label>
+                                联系人职位：
+                              </ion-label>
+                      
+                            </ion-item>
+                            <ion-item>{{companyList.position}}</ion-item>
+                  </ion-list>
+              
+                </ion-list>
+                <ion-list  class="fillInlist">
+                    <ion-item class="sm-headline">
+                      <ion-icon name="my-project" md="md-my-project" color="primary" class="sm-icon"></ion-icon>需求信息
+                      <ion-icon name="ios-arrow-down" item-right *ngIf="!isShow3" (click)="isShow3=!isShow3" class="arrow"></ion-icon>
+                      <ion-icon name="ios-arrow-forward" item-right *ngIf="isShow3" (click)="isShow3=!isShow3" class="arrow"></ion-icon>
+                    </ion-item>
+                    <ion-list *ngIf="!isShow3">
+                        <ion-item>
+                            <ion-label>
+                              项目类型：
+                            </ion-label>
+                          </ion-item>
+                          <ion-item>{{companyList.products}}</ion-item>
+                          <ion-item>
+                              <ion-label>
+                                项目说明：
+                              </ion-label>
+                            </ion-item>
+                            <ion-item>{{companyList.companyType}}</ion-item>
+                    
+                    </ion-list>
+                    
+                  </ion-list>
+                  <ion-list  class="fillInlist"  *ngSwitchCase="'station'">
+                      <ion-item class="sm-headline">
+                        <ion-icon name="my-project" md="md-my-project" color="primary" class="sm-icon"></ion-icon>需求信息
+                        <ion-icon name="ios-arrow-down" item-right *ngIf="!isShow1" (click)="isShow1=!isShow1" class="arrow"></ion-icon>
+                        <ion-icon name="ios-arrow-forward" item-right *ngIf="isShow1" (click)="isShow1=!isShow1" class="arrow"></ion-icon>
+                      </ion-item>
+                      <ion-list *ngIf="!isShow1">
+                          <ion-item>
+                              <ion-label>
+                                企业名称:
+                              </ion-label>
+                            </ion-item>
+                            <ion-item>{{companyList.company}}</ion-item>
+                            <ion-item>
+                                <ion-label>
+                                  公司成立时间：
+                                </ion-label>
+                              </ion-item>
+                              <ion-item>{{companyList.createCompanyTime}}</ion-item>
+                      </ion-list>
+                   
+                      
+                    </ion-list>
+                    <ion-list  class="fillInlist">
+                        <ion-item class="sm-headline">
+                          <ion-icon name="my-project" md="md-my-project" color="primary" class="sm-icon"></ion-icon>联系人信息
+                          <ion-icon name="ios-arrow-down" item-right *ngIf="!isShow2" (click)="isShow2=!isShow2" class="arrow"></ion-icon>
+                          <ion-icon name="ios-arrow-forward" item-right *ngIf="isShow2" (click)="isShow2=!isShow2" class="arrow"></ion-icon>
+                        </ion-item>
+                        <ion-list *ngIf="!isShow2">
+                            <ion-item>
+                                <ion-label>
+                                  联系人姓名：
+                                </ion-label>
+                        
+                              </ion-item>
+                              <ion-item>{{companyList.name}}</ion-item>
+                              <ion-item>
+                                  <ion-label>
+                                    联系人性别：
+                                  </ion-label>
+                    
+                                </ion-item>
+                                <ion-item>{{companyList.sex}}</ion-item>
+                                <ion-item>
+                                    <ion-label>
+                                      联系人职位：
+                                    </ion-label>
+                            
+                                  </ion-item>
+                                  <ion-item>{{companyList.position}}</ion-item>
+                        </ion-list>
+                    
+                      </ion-list>
+                      <ion-list  class="fillInlist">
+                          <ion-item class="sm-headline">
+                            <ion-icon name="my-project" md="md-my-project" color="primary" class="sm-icon"></ion-icon>需求信息
+                            <ion-icon name="ios-arrow-down" item-right *ngIf="!isShow3" (click)="isShow3=!isShow3" class="arrow"></ion-icon>
+                            <ion-icon name="ios-arrow-forward" item-right *ngIf="isShow3" (click)="isShow3=!isShow3" class="arrow"></ion-icon>
+                          </ion-item>
+                          <ion-list *ngIf="!isShow3">
+                              <ion-item>
+                                  <ion-label>
+                                    项目类型：
+                                  </ion-label>
+                                </ion-item>
+                                <ion-item>{{companyList.products}}</ion-item>
+                                <ion-item>
+                                    <ion-label>
+                                      项目说明：
+                                    </ion-label>
+                                  </ion-item>
+                                  <ion-item>{{companyList.companyType}}</ion-item>
+                          
+                          </ion-list>
+                          
+                        </ion-list>
+
+     
+  
+  
+  
+          </ion-list>
+
+
+</ion-content>

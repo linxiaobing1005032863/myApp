@@ -1,0 +1,70 @@
+<!--
+  Generated template for the BidPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+  <ion-header>
+    <ion-navbar color="primary">
+      <ion-title>需求市场</ion-title>
+      <ion-buttons end >
+        <button ion-button icon-only color="royal" (click)="gotofiltrate()">
+          筛选
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+    <ion-toolbar no-border-top>
+      <ion-segment [(ngModel)]="demand" (ionChange)=sysChanged(demand)>
+        <ion-segment-button  value="company" (click)="setHttp(company)">
+          企业需求
+        </ion-segment-button>
+        <ion-segment-button value="people" (click)="setHttp(people)">
+          业主需求
+        </ion-segment-button>
+        <ion-segment-button value="station" (click)="setHttp(station)">
+          站点需求
+        </ion-segment-button>
+      </ion-segment>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding id="bid-style" >
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+      <div [ngSwitch]="demand" >
+          <ion-list *ngSwitchCase="'company'"  #abc>
+              <ion-item *ngFor="let item of companyList" (click)="companyDatile(item)">
+                <ion-thumbnail item-start>
+                  <img src="../../assets/imgs/lgLogo.png">
+                </ion-thumbnail>
+                <h2>{{item.company}}</h2>
+                <p>联系电话{{item.companyPhone}}</p>
+                <button ion-button clear item-end>View</button>
+              </ion-item>
+            </ion-list>
+            <ion-list  *ngSwitchCase="'people'"  #abc>
+                <ion-item *ngFor="let item1 of ownerList" (click)="peopleDetile(item1)">
+                  <ion-thumbnail item-start>
+                    <img src="../../assets/imgs/lgLogo.png">
+                  </ion-thumbnail>
+                  <h2>{{item1.ownerName}}</h2>
+                  <p>联系号码{{item1.ownerPhone}}</p>
+                  <button ion-button clear item-end>View</button>
+                </ion-item>
+              </ion-list>
+              <ion-list *ngSwitchCase="'station'"  #abc>
+                  <ion-item>
+                    <ion-thumbnail item-start>
+                      <img src="../../assets/imgs/lgLogo.png">
+                    </ion-thumbnail>
+                    <h2>111</h2>
+                    <p>222</p>
+                    <button ion-button clear item-end>View</button>
+                  </ion-item>
+                </ion-list>
+      </div>
+    
+
+</ion-content>
